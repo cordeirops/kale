@@ -1,10 +1,10 @@
 "use strict";
-(self["webpackChunkkubeflow_kale_labextension"] = self["webpackChunkkubeflow_kale_labextension"] || []).push([["lib_src_index_js"],{
+(self["webpackChunkkubeflow_kale_labextension"] = self["webpackChunkkubeflow_kale_labextension"] || []).push([["lib_index_js"],{
 
-/***/ "./lib/src/Theme.js":
-/*!**************************!*\
-  !*** ./lib/src/Theme.js ***!
-  \**************************/
+/***/ "./lib/Theme.js":
+/*!**********************!*\
+  !*** ./lib/Theme.js ***!
+  \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -36,10 +36,10 @@ const theme = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_0__["default"])({
 
 /***/ }),
 
-/***/ "./lib/src/components/AdvancedSettings.js":
-/*!************************************************!*\
-  !*** ./lib/src/components/AdvancedSettings.js ***!
-  \************************************************/
+/***/ "./lib/components/AdvancedSettings.js":
+/*!********************************************!*\
+  !*** ./lib/components/AdvancedSettings.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -48,7 +48,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Input */ "./lib/src/components/Input.js");
+/* harmony import */ var _Input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Input */ "./lib/components/Input.js");
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/material */ "webpack/sharing/consume/default/@mui/material/@mui/material");
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_mui_material__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material/styles */ "./node_modules/@mui/material/esm/styles/useTheme.js");
@@ -210,10 +210,10 @@ const AdvancedSettings = (props) => {
 
 /***/ }),
 
-/***/ "./lib/src/components/AnnotationInput.js":
-/*!***********************************************!*\
-  !*** ./lib/src/components/AnnotationInput.js ***!
-  \***********************************************/
+/***/ "./lib/components/AnnotationInput.js":
+/*!*******************************************!*\
+  !*** ./lib/components/AnnotationInput.js ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -222,8 +222,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Input */ "./lib/src/components/Input.js");
-/* harmony import */ var _RokInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RokInput */ "./lib/src/components/RokInput.js");
+/* harmony import */ var _Input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Input */ "./lib/components/Input.js");
+/* harmony import */ var _RokInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RokInput */ "./lib/components/RokInput.js");
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material */ "webpack/sharing/consume/default/@mui/material/@mui/material");
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_mui_material__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _mui_icons_material_Delete__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/icons-material/Delete */ "./node_modules/@mui/icons-material/esm/Delete.js");
@@ -273,10 +273,10 @@ const AnnotationInput = props => {
 
 /***/ }),
 
-/***/ "./lib/src/components/DeployButton.js":
-/*!********************************************!*\
-  !*** ./lib/src/components/DeployButton.js ***!
-  \********************************************/
+/***/ "./lib/components/DeployButton.js":
+/*!****************************************!*\
+  !*** ./lib/components/DeployButton.js ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -512,10 +512,10 @@ const SplitDeployButton = (props) => {
 
 /***/ }),
 
-/***/ "./lib/src/components/ExperimentInput.js":
-/*!***********************************************!*\
-  !*** ./lib/src/components/ExperimentInput.js ***!
-  \***********************************************/
+/***/ "./lib/components/ExperimentInput.js":
+/*!*******************************************!*\
+  !*** ./lib/components/ExperimentInput.js ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -524,9 +524,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Input */ "./lib/src/components/Input.js");
-/* harmony import */ var _Select__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Select */ "./lib/src/components/Select.js");
-/* harmony import */ var _widgets_LeftPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../widgets/LeftPanel */ "./lib/src/widgets/LeftPanel.js");
+/* harmony import */ var _Input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Input */ "./lib/components/Input.js");
+/* harmony import */ var _Select__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Select */ "./lib/components/Select.js");
+/* harmony import */ var _widgets_LeftPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../widgets/LeftPanel */ "./lib/widgets/LeftPanel.js");
 // /*
 //  * Copyright 2019-2020 The Kale Authors
 //  *
@@ -636,10 +636,10 @@ const ExperimentInput = (props) => {
 
 /***/ }),
 
-/***/ "./lib/src/components/Input.js":
-/*!*************************************!*\
-  !*** ./lib/src/components/Input.js ***!
-  \*************************************/
+/***/ "./lib/components/Input.js":
+/*!*********************************!*\
+  !*** ./lib/components/Input.js ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -932,10 +932,10 @@ const Input = props => {
 
 /***/ }),
 
-/***/ "./lib/src/components/LightTooltip.js":
-/*!********************************************!*\
-  !*** ./lib/src/components/LightTooltip.js ***!
-  \********************************************/
+/***/ "./lib/components/LightTooltip.js":
+/*!****************************************!*\
+  !*** ./lib/components/LightTooltip.js ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -976,10 +976,10 @@ const LightTooltip = (0,_mui_material_styles__WEBPACK_IMPORTED_MODULE_1__["defau
 
 /***/ }),
 
-/***/ "./lib/src/components/RokInput.js":
-/*!****************************************!*\
-  !*** ./lib/src/components/RokInput.js ***!
-  \****************************************/
+/***/ "./lib/components/RokInput.js":
+/*!************************************!*\
+  !*** ./lib/components/RokInput.js ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -990,8 +990,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _mui_material_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/material/Button */ "./node_modules/@mui/material/esm/Button/Button.js");
 /* harmony import */ var _mui_material_InputAdornment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/material/InputAdornment */ "./node_modules/@mui/material/esm/InputAdornment/InputAdornment.js");
-/* harmony import */ var _icons_BrowseInRokBlue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../icons/BrowseInRokBlue */ "./lib/src/icons/BrowseInRokBlue.js");
-/* harmony import */ var _Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Input */ "./lib/src/components/Input.js");
+/* harmony import */ var _icons_BrowseInRokBlue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../icons/BrowseInRokBlue */ "./lib/icons/BrowseInRokBlue.js");
+/* harmony import */ var _Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Input */ "./lib/components/Input.js");
 /*
  * Copyright 2019-2020 The Kale Authors
  *
@@ -1066,10 +1066,10 @@ const RokInput = props => {
 
 /***/ }),
 
-/***/ "./lib/src/components/Select.js":
-/*!**************************************!*\
-  !*** ./lib/src/components/Select.js ***!
-  \**************************************/
+/***/ "./lib/components/Select.js":
+/*!**********************************!*\
+  !*** ./lib/components/Select.js ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1082,7 +1082,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/material */ "webpack/sharing/consume/default/@mui/material/@mui/material");
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_mui_material__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material/styles */ "./node_modules/@mui/material/esm/styles/styled.js");
-/* harmony import */ var _LightTooltip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./LightTooltip */ "./lib/src/components/LightTooltip.js");
+/* harmony import */ var _LightTooltip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./LightTooltip */ "./lib/components/LightTooltip.js");
 // /*
 //  * Copyright 2020 The Kale Authors
 //  *
@@ -1275,10 +1275,10 @@ const Select = (props) => {
 
 /***/ }),
 
-/***/ "./lib/src/components/SelectMulti.js":
-/*!*******************************************!*\
-  !*** ./lib/src/components/SelectMulti.js ***!
-  \*******************************************/
+/***/ "./lib/components/SelectMulti.js":
+/*!***************************************!*\
+  !*** ./lib/components/SelectMulti.js ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1294,7 +1294,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _mui_material_FormControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @mui/material/FormControl */ "./node_modules/@mui/material/esm/FormControl/FormControl.js");
 /* harmony import */ var _mui_material_InputLabel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @mui/material/InputLabel */ "./node_modules/@mui/material/esm/InputLabel/InputLabel.js");
 /* harmony import */ var _mui_material_Chip__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @mui/material/Chip */ "./node_modules/@mui/material/esm/Chip/Chip.js");
-/* harmony import */ var _lib_ColorUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../lib/ColorUtils */ "./lib/src/lib/ColorUtils.js");
+/* harmony import */ var _lib_ColorUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../lib/ColorUtils */ "./lib/lib/ColorUtils.js");
 // /*
 //  * Copyright 2020 The Kale Authors
 //  *
@@ -1476,10 +1476,10 @@ const SelectMulti = (props) => {
 
 /***/ }),
 
-/***/ "./lib/src/components/VolumeAccessModeSelect.js":
-/*!******************************************************!*\
-  !*** ./lib/src/components/VolumeAccessModeSelect.js ***!
-  \******************************************************/
+/***/ "./lib/components/VolumeAccessModeSelect.js":
+/*!**************************************************!*\
+  !*** ./lib/components/VolumeAccessModeSelect.js ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1488,7 +1488,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Select__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Select */ "./lib/src/components/Select.js");
+/* harmony import */ var _Select__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Select */ "./lib/components/Select.js");
 /*
  * Copyright 2020 The Kale Authors
  *
@@ -1533,10 +1533,10 @@ const VolumeAccessModeSelect = props => {
 
 /***/ }),
 
-/***/ "./lib/src/icons/BrowseInRokBlue.js":
-/*!******************************************!*\
-  !*** ./lib/src/icons/BrowseInRokBlue.js ***!
-  \******************************************/
+/***/ "./lib/icons/BrowseInRokBlue.js":
+/*!**************************************!*\
+  !*** ./lib/icons/BrowseInRokBlue.js ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1581,10 +1581,10 @@ class BrowseInRokBLue extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
 
 /***/ }),
 
-/***/ "./lib/src/icons/statusRunning.js":
-/*!****************************************!*\
-  !*** ./lib/src/icons/statusRunning.js ***!
-  \****************************************/
+/***/ "./lib/icons/statusRunning.js":
+/*!************************************!*\
+  !*** ./lib/icons/statusRunning.js ***!
+  \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1624,10 +1624,10 @@ class StatusRunning extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
 
 /***/ }),
 
-/***/ "./lib/src/icons/statusTerminated.js":
-/*!*******************************************!*\
-  !*** ./lib/src/icons/statusTerminated.js ***!
-  \*******************************************/
+/***/ "./lib/icons/statusTerminated.js":
+/*!***************************************!*\
+  !*** ./lib/icons/statusTerminated.js ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1668,17 +1668,17 @@ class StatusTerminated extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
 
 /***/ }),
 
-/***/ "./lib/src/index.js":
-/*!**************************!*\
-  !*** ./lib/src/index.js ***!
-  \**************************/
+/***/ "./lib/index.js":
+/*!**********************!*\
+  !*** ./lib/index.js ***!
+  \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _widget__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./widget */ "./lib/src/widget.js");
+/* harmony import */ var _widget__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./widget */ "./lib/widget.js");
 /*
  * Copyright 2019-2020 The Kale Authors
  *
@@ -1700,10 +1700,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./lib/src/lib/CellMetadataContext.js":
-/*!********************************************!*\
-  !*** ./lib/src/lib/CellMetadataContext.js ***!
-  \********************************************/
+/***/ "./lib/lib/CellMetadataContext.js":
+/*!****************************************!*\
+  !*** ./lib/lib/CellMetadataContext.js ***!
+  \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1737,10 +1737,10 @@ const CellMetadataContext = react__WEBPACK_IMPORTED_MODULE_0__.createContext({
 
 /***/ }),
 
-/***/ "./lib/src/lib/CellUtils.js":
-/*!**********************************!*\
-  !*** ./lib/src/lib/CellUtils.js ***!
-  \**********************************/
+/***/ "./lib/lib/CellUtils.js":
+/*!******************************!*\
+  !*** ./lib/lib/CellUtils.js ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1753,7 +1753,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _jupyterlab_nbformat__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_jupyterlab_nbformat__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _jupyterlab_notebook__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @jupyterlab/notebook */ "webpack/sharing/consume/default/@jupyterlab/notebook");
 /* harmony import */ var _jupyterlab_notebook__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_jupyterlab_notebook__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _NotebookUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NotebookUtils */ "./lib/src/lib/NotebookUtils.js");
+/* harmony import */ var _NotebookUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NotebookUtils */ "./lib/lib/NotebookUtils.js");
 /*
  * Copyright 2019-2020 The Kale Authors
  *
@@ -2112,17 +2112,17 @@ class CellUtilities {
 
 /***/ }),
 
-/***/ "./lib/src/lib/ColorUtils.js":
-/*!***********************************!*\
-  !*** ./lib/src/lib/ColorUtils.js ***!
-  \***********************************/
+/***/ "./lib/lib/ColorUtils.js":
+/*!*******************************!*\
+  !*** ./lib/lib/ColorUtils.js ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ColorUtils)
 /* harmony export */ });
-/* harmony import */ var _widgets_cell_metadata_CellMetadataEditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/cell-metadata/CellMetadataEditor */ "./lib/src/widgets/cell-metadata/CellMetadataEditor.js");
+/* harmony import */ var _widgets_cell_metadata_CellMetadataEditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widgets/cell-metadata/CellMetadataEditor */ "./lib/widgets/cell-metadata/CellMetadataEditor.js");
 /*
  * Copyright 2019-2020 The Kale Authors
  *
@@ -2185,22 +2185,22 @@ class ColorUtils {
 
 /***/ }),
 
-/***/ "./lib/src/lib/Commands.js":
-/*!*********************************!*\
-  !*** ./lib/src/lib/Commands.js ***!
-  \*********************************/
+/***/ "./lib/lib/Commands.js":
+/*!*****************************!*\
+  !*** ./lib/lib/Commands.js ***!
+  \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Commands)
 /* harmony export */ });
-/* harmony import */ var _RPCUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RPCUtils */ "./lib/src/lib/RPCUtils.js");
-/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Utils */ "./lib/src/lib/Utils.js");
-/* harmony import */ var _widgets_LeftPanel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../widgets/LeftPanel */ "./lib/src/widgets/LeftPanel.js");
-/* harmony import */ var _NotebookUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NotebookUtils */ "./lib/src/lib/NotebookUtils.js");
-/* harmony import */ var _widgets_VolumesPanel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../widgets/VolumesPanel */ "./lib/src/widgets/VolumesPanel.js");
-/* harmony import */ var _CellUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CellUtils */ "./lib/src/lib/CellUtils.js");
+/* harmony import */ var _RPCUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RPCUtils */ "./lib/lib/RPCUtils.js");
+/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Utils */ "./lib/lib/Utils.js");
+/* harmony import */ var _widgets_LeftPanel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../widgets/LeftPanel */ "./lib/widgets/LeftPanel.js");
+/* harmony import */ var _NotebookUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NotebookUtils */ "./lib/lib/NotebookUtils.js");
+/* harmony import */ var _widgets_VolumesPanel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../widgets/VolumesPanel */ "./lib/widgets/VolumesPanel.js");
+/* harmony import */ var _CellUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CellUtils */ "./lib/lib/CellUtils.js");
 /*
  * Copyright 2020 The Kale Authors
  *
@@ -2604,10 +2604,10 @@ class Commands {
 
 /***/ }),
 
-/***/ "./lib/src/lib/NotebookUtils.js":
-/*!**************************************!*\
-  !*** ./lib/src/lib/NotebookUtils.js ***!
-  \**************************************/
+/***/ "./lib/lib/NotebookUtils.js":
+/*!**********************************!*\
+  !*** ./lib/lib/NotebookUtils.js ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2624,8 +2624,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _jupyterlab_cells__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @jupyterlab/cells */ "webpack/sharing/consume/default/@jupyterlab/cells");
 /* harmony import */ var _jupyterlab_cells__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_jupyterlab_cells__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _widgets_cell_metadata_CellMetadataEditor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../widgets/cell-metadata/CellMetadataEditor */ "./lib/src/widgets/cell-metadata/CellMetadataEditor.js");
-/* harmony import */ var _CellUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CellUtils */ "./lib/src/lib/CellUtils.js");
+/* harmony import */ var _widgets_cell_metadata_CellMetadataEditor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../widgets/cell-metadata/CellMetadataEditor */ "./lib/widgets/cell-metadata/CellMetadataEditor.js");
+/* harmony import */ var _CellUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CellUtils */ "./lib/lib/CellUtils.js");
 // /*
 //  * Copyright 2019-2020 The Kale Authors
 //  *
@@ -3463,10 +3463,10 @@ class NotebookUtilities {
 
 /***/ }),
 
-/***/ "./lib/src/lib/RPCUtils.js":
-/*!*********************************!*\
-  !*** ./lib/src/lib/RPCUtils.js ***!
-  \*********************************/
+/***/ "./lib/lib/RPCUtils.js":
+/*!*****************************!*\
+  !*** ./lib/lib/RPCUtils.js ***!
+  \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -3488,7 +3488,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _jupyterlab_notebook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @jupyterlab/notebook */ "webpack/sharing/consume/default/@jupyterlab/notebook");
 /* harmony import */ var _jupyterlab_notebook__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_jupyterlab_notebook__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _NotebookUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NotebookUtils */ "./lib/src/lib/NotebookUtils.js");
+/* harmony import */ var _NotebookUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NotebookUtils */ "./lib/lib/NotebookUtils.js");
 /* harmony import */ var _jupyterlab_nbformat__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @jupyterlab/nbformat */ "webpack/sharing/consume/default/@jupyterlab/nbformat");
 /* harmony import */ var _jupyterlab_nbformat__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_jupyterlab_nbformat__WEBPACK_IMPORTED_MODULE_3__);
 /*
@@ -3766,18 +3766,18 @@ class RPCError extends BaseError {
 
 /***/ }),
 
-/***/ "./lib/src/lib/TagsUtils.js":
-/*!**********************************!*\
-  !*** ./lib/src/lib/TagsUtils.js ***!
-  \**********************************/
+/***/ "./lib/lib/TagsUtils.js":
+/*!******************************!*\
+  !*** ./lib/lib/TagsUtils.js ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ TagsUtils)
 /* harmony export */ });
-/* harmony import */ var _CellUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CellUtils */ "./lib/src/lib/CellUtils.js");
-/* harmony import */ var _widgets_cell_metadata_CellMetadataEditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../widgets/cell-metadata/CellMetadataEditor */ "./lib/src/widgets/cell-metadata/CellMetadataEditor.js");
+/* harmony import */ var _CellUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CellUtils */ "./lib/lib/CellUtils.js");
+/* harmony import */ var _widgets_cell_metadata_CellMetadataEditor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../widgets/cell-metadata/CellMetadataEditor */ "./lib/widgets/cell-metadata/CellMetadataEditor.js");
 /* harmony import */ var _jupyterlab_cells__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @jupyterlab/cells */ "webpack/sharing/consume/default/@jupyterlab/cells");
 /* harmony import */ var _jupyterlab_cells__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_jupyterlab_cells__WEBPACK_IMPORTED_MODULE_2__);
 /*
@@ -3991,10 +3991,10 @@ class TagsUtils {
 
 /***/ }),
 
-/***/ "./lib/src/lib/Utils.js":
-/*!******************************!*\
-  !*** ./lib/src/lib/Utils.js ***!
-  \******************************/
+/***/ "./lib/lib/Utils.js":
+/*!**************************!*\
+  !*** ./lib/lib/Utils.js ***!
+  \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -4046,10 +4046,10 @@ function headURL(href, origin = window.location.origin, timeout = 1500) {
 
 /***/ }),
 
-/***/ "./lib/src/widget.js":
-/*!***************************!*\
-  !*** ./lib/src/widget.js ***!
-  \***************************/
+/***/ "./lib/widget.js":
+/*!***********************!*\
+  !*** ./lib/widget.js ***!
+  \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -4069,10 +4069,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lumino_coreutils__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_lumino_coreutils__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _style_index_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../style/index.css */ "./lib/style/index.css");
-/* harmony import */ var _widgets_LeftPanel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./widgets/LeftPanel */ "./lib/src/widgets/LeftPanel.js");
-/* harmony import */ var _lib_NotebookUtils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./lib/NotebookUtils */ "./lib/src/lib/NotebookUtils.js");
-/* harmony import */ var _lib_RPCUtils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./lib/RPCUtils */ "./lib/src/lib/RPCUtils.js");
+/* harmony import */ var _style_index_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../style/index.css */ "./style/index.css");
+/* harmony import */ var _widgets_LeftPanel__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./widgets/LeftPanel */ "./lib/widgets/LeftPanel.js");
+/* harmony import */ var _lib_NotebookUtils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./lib/NotebookUtils */ "./lib/lib/NotebookUtils.js");
+/* harmony import */ var _lib_RPCUtils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./lib/RPCUtils */ "./lib/lib/RPCUtils.js");
 /* harmony import */ var _jupyterlab_coreutils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @jupyterlab/coreutils */ "webpack/sharing/consume/default/@jupyterlab/coreutils");
 /* harmony import */ var _jupyterlab_coreutils__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_jupyterlab_coreutils__WEBPACK_IMPORTED_MODULE_10__);
 /*
@@ -4222,10 +4222,10 @@ async function activate(lab, labShell, restorer, tracker, docManager) {
 
 /***/ }),
 
-/***/ "./lib/src/widgets/LeftPanel.js":
-/*!**************************************!*\
-  !*** ./lib/src/widgets/LeftPanel.js ***!
-  \**************************************/
+/***/ "./lib/widgets/LeftPanel.js":
+/*!**********************************!*\
+  !*** ./lib/widgets/LeftPanel.js ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -4238,18 +4238,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _jupyterlab_notebook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @jupyterlab/notebook */ "webpack/sharing/consume/default/@jupyterlab/notebook");
 /* harmony import */ var _jupyterlab_notebook__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_jupyterlab_notebook__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _lib_NotebookUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../lib/NotebookUtils */ "./lib/src/lib/NotebookUtils.js");
-/* harmony import */ var _lib_RPCUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/RPCUtils */ "./lib/src/lib/RPCUtils.js");
-/* harmony import */ var _components_AdvancedSettings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/AdvancedSettings */ "./lib/src/components/AdvancedSettings.js");
-/* harmony import */ var _cell_metadata_InlineCellMetadata__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cell-metadata/InlineCellMetadata */ "./lib/src/widgets/cell-metadata/InlineCellMetadata.js");
-/* harmony import */ var _VolumesPanel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./VolumesPanel */ "./lib/src/widgets/VolumesPanel.js");
-/* harmony import */ var _components_DeployButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/DeployButton */ "./lib/src/components/DeployButton.js");
-/* harmony import */ var _components_ExperimentInput__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/ExperimentInput */ "./lib/src/components/ExperimentInput.js");
-/* harmony import */ var _deploys_progress_DeploysProgress__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./deploys-progress/DeploysProgress */ "./lib/src/widgets/deploys-progress/DeploysProgress.js");
+/* harmony import */ var _lib_NotebookUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../lib/NotebookUtils */ "./lib/lib/NotebookUtils.js");
+/* harmony import */ var _lib_RPCUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../lib/RPCUtils */ "./lib/lib/RPCUtils.js");
+/* harmony import */ var _components_AdvancedSettings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/AdvancedSettings */ "./lib/components/AdvancedSettings.js");
+/* harmony import */ var _cell_metadata_InlineCellMetadata__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./cell-metadata/InlineCellMetadata */ "./lib/widgets/cell-metadata/InlineCellMetadata.js");
+/* harmony import */ var _VolumesPanel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./VolumesPanel */ "./lib/widgets/VolumesPanel.js");
+/* harmony import */ var _components_DeployButton__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/DeployButton */ "./lib/components/DeployButton.js");
+/* harmony import */ var _components_ExperimentInput__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/ExperimentInput */ "./lib/components/ExperimentInput.js");
+/* harmony import */ var _deploys_progress_DeploysProgress__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./deploys-progress/DeploysProgress */ "./lib/widgets/deploys-progress/DeploysProgress.js");
 /* harmony import */ var _mui_material_styles__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @mui/material/styles */ "./node_modules/@mui/material/esm/styles/ThemeProvider.js");
-/* harmony import */ var _Theme__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Theme */ "./lib/src/Theme.js");
-/* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/Input */ "./lib/src/components/Input.js");
-/* harmony import */ var _lib_Commands__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../lib/Commands */ "./lib/src/lib/Commands.js");
+/* harmony import */ var _Theme__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Theme */ "./lib/Theme.js");
+/* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/Input */ "./lib/components/Input.js");
+/* harmony import */ var _lib_Commands__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../lib/Commands */ "./lib/lib/Commands.js");
 /* harmony import */ var _jupyterlab_coreutils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @jupyterlab/coreutils */ "webpack/sharing/consume/default/@jupyterlab/coreutils");
 /* harmony import */ var _jupyterlab_coreutils__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_jupyterlab_coreutils__WEBPACK_IMPORTED_MODULE_14__);
 /*
@@ -4769,10 +4769,10 @@ class KubeflowKaleLeftPanel extends react__WEBPACK_IMPORTED_MODULE_0__.Component
 
 /***/ }),
 
-/***/ "./lib/src/widgets/VolumesPanel.js":
-/*!*****************************************!*\
-  !*** ./lib/src/widgets/VolumesPanel.js ***!
-  \*****************************************/
+/***/ "./lib/widgets/VolumesPanel.js":
+/*!*************************************!*\
+  !*** ./lib/widgets/VolumesPanel.js ***!
+  \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -4787,13 +4787,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _material_ui_icons_Add__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/icons/Add */ "./node_modules/@material-ui/icons/Add.js");
 /* harmony import */ var _mui_icons_material_Delete__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/icons-material/Delete */ "./node_modules/@mui/icons-material/esm/Delete.js");
-/* harmony import */ var _lib_RPCUtils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../lib/RPCUtils */ "./lib/src/lib/RPCUtils.js");
-/* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Input */ "./lib/src/components/Input.js");
-/* harmony import */ var _components_Select__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Select */ "./lib/src/components/Select.js");
-/* harmony import */ var _components_LightTooltip__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/LightTooltip */ "./lib/src/components/LightTooltip.js");
-/* harmony import */ var _components_AnnotationInput__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/AnnotationInput */ "./lib/src/components/AnnotationInput.js");
-/* harmony import */ var _lib_Utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../lib/Utils */ "./lib/src/lib/Utils.js");
-/* harmony import */ var _components_VolumeAccessModeSelect__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/VolumeAccessModeSelect */ "./lib/src/components/VolumeAccessModeSelect.js");
+/* harmony import */ var _lib_RPCUtils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../lib/RPCUtils */ "./lib/lib/RPCUtils.js");
+/* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Input */ "./lib/components/Input.js");
+/* harmony import */ var _components_Select__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Select */ "./lib/components/Select.js");
+/* harmony import */ var _components_LightTooltip__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/LightTooltip */ "./lib/components/LightTooltip.js");
+/* harmony import */ var _components_AnnotationInput__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/AnnotationInput */ "./lib/components/AnnotationInput.js");
+/* harmony import */ var _lib_Utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../lib/Utils */ "./lib/lib/Utils.js");
+/* harmony import */ var _components_VolumeAccessModeSelect__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/VolumeAccessModeSelect */ "./lib/components/VolumeAccessModeSelect.js");
 /*
  * Copyright 2019-2020 The Kale Authors
  *
@@ -5124,10 +5124,10 @@ const VolumesPanel = props => {
 
 /***/ }),
 
-/***/ "./lib/src/widgets/cell-metadata/CellMetadataEditor.js":
-/*!*************************************************************!*\
-  !*** ./lib/src/widgets/cell-metadata/CellMetadataEditor.js ***!
-  \*************************************************************/
+/***/ "./lib/widgets/cell-metadata/CellMetadataEditor.js":
+/*!*********************************************************!*\
+  !*** ./lib/widgets/cell-metadata/CellMetadataEditor.js ***!
+  \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -5139,18 +5139,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _lib_TagsUtils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../lib/TagsUtils */ "./lib/src/lib/TagsUtils.js");
+/* harmony import */ var _lib_TagsUtils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../lib/TagsUtils */ "./lib/lib/TagsUtils.js");
 /* harmony import */ var _jupyterlab_cells__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @jupyterlab/cells */ "webpack/sharing/consume/default/@jupyterlab/cells");
 /* harmony import */ var _jupyterlab_cells__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_jupyterlab_cells__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _material_ui_icons_Close__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/icons/Close */ "./node_modules/@material-ui/icons/Close.js");
-/* harmony import */ var _lib_ColorUtils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../lib/ColorUtils */ "./lib/src/lib/ColorUtils.js");
-/* harmony import */ var _lib_CellMetadataContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../lib/CellMetadataContext */ "./lib/src/lib/CellMetadataContext.js");
+/* harmony import */ var _lib_ColorUtils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../lib/ColorUtils */ "./lib/lib/ColorUtils.js");
+/* harmony import */ var _lib_CellMetadataContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../lib/CellMetadataContext */ "./lib/lib/CellMetadataContext.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core */ "webpack/sharing/consume/default/@material-ui/core/@material-ui/core");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _CellMetadataEditorDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CellMetadataEditorDialog */ "./lib/src/widgets/cell-metadata/CellMetadataEditorDialog.js");
-/* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/Input */ "./lib/src/components/Input.js");
-/* harmony import */ var _components_Select__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Select */ "./lib/src/components/Select.js");
-/* harmony import */ var _components_SelectMulti__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/SelectMulti */ "./lib/src/components/SelectMulti.js");
+/* harmony import */ var _CellMetadataEditorDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CellMetadataEditorDialog */ "./lib/widgets/cell-metadata/CellMetadataEditorDialog.js");
+/* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/Input */ "./lib/components/Input.js");
+/* harmony import */ var _components_Select__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Select */ "./lib/components/Select.js");
+/* harmony import */ var _components_SelectMulti__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/SelectMulti */ "./lib/components/SelectMulti.js");
 /*
  * Copyright 2019-2020 The Kale Authors
  *
@@ -5422,10 +5422,10 @@ CellMetadataEditor.contextType = _lib_CellMetadataContext__WEBPACK_IMPORTED_MODU
 
 /***/ }),
 
-/***/ "./lib/src/widgets/cell-metadata/CellMetadataEditorDialog.js":
-/*!*******************************************************************!*\
-  !*** ./lib/src/widgets/cell-metadata/CellMetadataEditorDialog.js ***!
-  \*******************************************************************/
+/***/ "./lib/widgets/cell-metadata/CellMetadataEditorDialog.js":
+/*!***************************************************************!*\
+  !*** ./lib/widgets/cell-metadata/CellMetadataEditorDialog.js ***!
+  \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -5436,9 +5436,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core */ "webpack/sharing/consume/default/@material-ui/core/@material-ui/core");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _lib_ColorUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../lib/ColorUtils */ "./lib/src/lib/ColorUtils.js");
-/* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Input */ "./lib/src/components/Input.js");
-/* harmony import */ var _components_Select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Select */ "./lib/src/components/Select.js");
+/* harmony import */ var _lib_ColorUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../lib/ColorUtils */ "./lib/lib/ColorUtils.js");
+/* harmony import */ var _components_Input__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Input */ "./lib/components/Input.js");
+/* harmony import */ var _components_Select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Select */ "./lib/components/Select.js");
 /*
  * Copyright 2020 The Kale Authors
  *
@@ -5520,10 +5520,10 @@ const CellMetadataEditorDialog = props => {
 
 /***/ }),
 
-/***/ "./lib/src/widgets/cell-metadata/InlineCellMetadata.js":
-/*!*************************************************************!*\
-  !*** ./lib/src/widgets/cell-metadata/InlineCellMetadata.js ***!
-  \*************************************************************/
+/***/ "./lib/widgets/cell-metadata/InlineCellMetadata.js":
+/*!*********************************************************!*\
+  !*** ./lib/widgets/cell-metadata/InlineCellMetadata.js ***!
+  \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -5534,14 +5534,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _jupyterlab_cells__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @jupyterlab/cells */ "webpack/sharing/consume/default/@jupyterlab/cells");
 /* harmony import */ var _jupyterlab_cells__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_jupyterlab_cells__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _lib_CellUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../lib/CellUtils */ "./lib/src/lib/CellUtils.js");
-/* harmony import */ var _lib_TagsUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../lib/TagsUtils */ "./lib/src/lib/TagsUtils.js");
-/* harmony import */ var _InlineMetadata__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./InlineMetadata */ "./lib/src/widgets/cell-metadata/InlineMetadata.js");
-/* harmony import */ var _CellMetadataEditor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CellMetadataEditor */ "./lib/src/widgets/cell-metadata/CellMetadataEditor.js");
-/* harmony import */ var _lib_CellMetadataContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../lib/CellMetadataContext */ "./lib/src/lib/CellMetadataContext.js");
+/* harmony import */ var _lib_CellUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../lib/CellUtils */ "./lib/lib/CellUtils.js");
+/* harmony import */ var _lib_TagsUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../lib/TagsUtils */ "./lib/lib/TagsUtils.js");
+/* harmony import */ var _InlineMetadata__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./InlineMetadata */ "./lib/widgets/cell-metadata/InlineMetadata.js");
+/* harmony import */ var _CellMetadataEditor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CellMetadataEditor */ "./lib/widgets/cell-metadata/CellMetadataEditor.js");
+/* harmony import */ var _lib_CellMetadataContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../lib/CellMetadataContext */ "./lib/lib/CellMetadataContext.js");
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material */ "webpack/sharing/consume/default/@mui/material/@mui/material");
 /* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_mui_material__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _lib_NotebookUtils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../lib/NotebookUtils */ "./lib/src/lib/NotebookUtils.js");
+/* harmony import */ var _lib_NotebookUtils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../lib/NotebookUtils */ "./lib/lib/NotebookUtils.js");
 /*
  * Copyright 2019-2020 The Kale Authors
  *
@@ -5757,10 +5757,10 @@ class InlineCellsMetadata extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
 
 /***/ }),
 
-/***/ "./lib/src/widgets/cell-metadata/InlineMetadata.js":
-/*!*********************************************************!*\
-  !*** ./lib/src/widgets/cell-metadata/InlineMetadata.js ***!
-  \*********************************************************/
+/***/ "./lib/widgets/cell-metadata/InlineMetadata.js":
+/*!*****************************************************!*\
+  !*** ./lib/widgets/cell-metadata/InlineMetadata.js ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -5771,10 +5771,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core */ "webpack/sharing/consume/default/@material-ui/core/@material-ui/core");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _lib_ColorUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../lib/ColorUtils */ "./lib/src/lib/ColorUtils.js");
-/* harmony import */ var _CellMetadataEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CellMetadataEditor */ "./lib/src/widgets/cell-metadata/CellMetadataEditor.js");
+/* harmony import */ var _lib_ColorUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../lib/ColorUtils */ "./lib/lib/ColorUtils.js");
+/* harmony import */ var _CellMetadataEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CellMetadataEditor */ "./lib/widgets/cell-metadata/CellMetadataEditor.js");
 /* harmony import */ var _material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/icons/Edit */ "./node_modules/@material-ui/icons/Edit.js");
-/* harmony import */ var _lib_CellMetadataContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../lib/CellMetadataContext */ "./lib/src/lib/CellMetadataContext.js");
+/* harmony import */ var _lib_CellMetadataContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../lib/CellMetadataContext */ "./lib/lib/CellMetadataContext.js");
 /*
  * Copyright 2019-2020 The Kale Authors
  *
@@ -5981,10 +5981,10 @@ InlineMetadata.contextType = _lib_CellMetadataContext__WEBPACK_IMPORTED_MODULE_5
 
 /***/ }),
 
-/***/ "./lib/src/widgets/deploys-progress/DeployProgress.js":
-/*!************************************************************!*\
-  !*** ./lib/src/widgets/deploys-progress/DeployProgress.js ***!
-  \************************************************************/
+/***/ "./lib/widgets/deploys-progress/DeployProgress.js":
+/*!********************************************************!*\
+  !*** ./lib/widgets/deploys-progress/DeployProgress.js ***!
+  \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -6003,9 +6003,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_icons_SkipNext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/icons/SkipNext */ "./node_modules/@material-ui/icons/SkipNext.js");
 /* harmony import */ var _material_ui_icons_CheckCircle__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/icons/CheckCircle */ "./node_modules/@material-ui/icons/CheckCircle.js");
 /* harmony import */ var _material_ui_icons_Cancel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/icons/Cancel */ "./node_modules/@material-ui/icons/Cancel.js");
-/* harmony import */ var _icons_statusRunning__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../icons/statusRunning */ "./lib/src/icons/statusRunning.js");
-/* harmony import */ var _icons_statusTerminated__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../icons/statusTerminated */ "./lib/src/icons/statusTerminated.js");
-/* harmony import */ var _DeployUtils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./DeployUtils */ "./lib/src/widgets/deploys-progress/DeployUtils.js");
+/* harmony import */ var _icons_statusRunning__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../icons/statusRunning */ "./lib/icons/statusRunning.js");
+/* harmony import */ var _icons_statusTerminated__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../icons/statusTerminated */ "./lib/icons/statusTerminated.js");
+/* harmony import */ var _DeployUtils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./DeployUtils */ "./lib/widgets/deploys-progress/DeployUtils.js");
 /*
  * Copyright 2019-2020 The Kale Authors
  *
@@ -6305,10 +6305,10 @@ const DeployProgress = props => {
 
 /***/ }),
 
-/***/ "./lib/src/widgets/deploys-progress/DeployUtils.js":
-/*!*********************************************************!*\
-  !*** ./lib/src/widgets/deploys-progress/DeployUtils.js ***!
-  \*********************************************************/
+/***/ "./lib/widgets/deploys-progress/DeployUtils.js":
+/*!*****************************************************!*\
+  !*** ./lib/widgets/deploys-progress/DeployUtils.js ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -6319,7 +6319,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _mui_icons_material_Warning__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/icons-material/Warning */ "./node_modules/@mui/icons-material/esm/Warning.js");
 /* harmony import */ var _mui_icons_material_Info__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/icons-material/Info */ "./node_modules/@mui/icons-material/esm/Info.js");
-/* harmony import */ var _lib_NotebookUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../lib/NotebookUtils */ "./lib/src/lib/NotebookUtils.js");
+/* harmony import */ var _lib_NotebookUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../lib/NotebookUtils */ "./lib/lib/NotebookUtils.js");
 /*
  * Copyright 2020 The Kale Authors
  *
@@ -6392,10 +6392,10 @@ DeployUtils.color = {
 
 /***/ }),
 
-/***/ "./lib/src/widgets/deploys-progress/DeploysProgress.js":
-/*!*************************************************************!*\
-  !*** ./lib/src/widgets/deploys-progress/DeploysProgress.js ***!
-  \*************************************************************/
+/***/ "./lib/widgets/deploys-progress/DeploysProgress.js":
+/*!*********************************************************!*\
+  !*** ./lib/widgets/deploys-progress/DeploysProgress.js ***!
+  \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -6404,7 +6404,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "webpack/sharing/consume/default/react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _DeployProgress__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeployProgress */ "./lib/src/widgets/deploys-progress/DeployProgress.js");
+/* harmony import */ var _DeployProgress__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeployProgress */ "./lib/widgets/deploys-progress/DeployProgress.js");
 /*
  * Copyright 2019-2020 The Kale Authors
  *
@@ -6448,75 +6448,21 @@ const DeploysProgress = props => {
 
 /***/ }),
 
-/***/ "./lib/style/index.css":
-/*!*****************************!*\
-  !*** ./lib/style/index.css ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/styleDomAPI.js");
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/insertBySelector.js");
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/insertStyleElement.js");
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/styleTagTransform.js");
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_css_loader_dist_cjs_js_index_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/@jupyterlab/builder/node_modules/css-loader/dist/cjs.js!./index.css */ "./node_modules/@jupyterlab/builder/node_modules/css-loader/dist/cjs.js!./lib/style/index.css");
-
-      
-      
-      
-      
-      
-      
-      
-      
-      
-
-var options = {};
-
-options.styleTagTransform = (_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
-options.setAttributes = (_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
-
-      options.insert = _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
-    
-options.domAPI = (_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
-options.insertStyleElement = (_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
-
-var update = _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_jupyterlab_builder_node_modules_css_loader_dist_cjs_js_index_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
-
-
-
-
-       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_jupyterlab_builder_node_modules_css_loader_dist_cjs_js_index_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_jupyterlab_builder_node_modules_css_loader_dist_cjs_js_index_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_jupyterlab_builder_node_modules_css_loader_dist_cjs_js_index_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
-
-
-/***/ }),
-
-/***/ "./node_modules/@jupyterlab/builder/node_modules/css-loader/dist/cjs.js!./lib/style/index.css":
-/*!****************************************************************************************************!*\
-  !*** ./node_modules/@jupyterlab/builder/node_modules/css-loader/dist/cjs.js!./lib/style/index.css ***!
-  \****************************************************************************************************/
+/***/ "./node_modules/@jupyterlab/builder/node_modules/css-loader/dist/cjs.js!./style/index.css":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@jupyterlab/builder/node_modules/css-loader/dist/cjs.js!./style/index.css ***!
+  \************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/@jupyterlab/builder/node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/@jupyterlab/builder/node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/@jupyterlab/builder/node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/@jupyterlab/builder/node_modules/css-loader/dist/runtime/sourceMaps.js");
 /* harmony import */ var _node_modules_jupyterlab_builder_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_jupyterlab_builder_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../node_modules/@jupyterlab/builder/node_modules/css-loader/dist/runtime/api.js */ "./node_modules/@jupyterlab/builder/node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/@jupyterlab/builder/node_modules/css-loader/dist/runtime/api.js */ "./node_modules/@jupyterlab/builder/node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_jupyterlab_builder_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_jupyterlab_builder_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/@jupyterlab/builder/node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/@jupyterlab/builder/node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../node_modules/@jupyterlab/builder/node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/@jupyterlab/builder/node_modules/css-loader/dist/runtime/getUrl.js");
 /* harmony import */ var _node_modules_jupyterlab_builder_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_jupyterlab_builder_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);
 // Imports
 
@@ -7017,9 +6963,63 @@ a {
 .dialog-body {
   white-space: pre;
 }
-`, "",{"version":3,"sources":["webpack://./lib/style/index.css"],"names":[],"mappings":"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","sourcesContent":["/*\n * Copyright 2019-2020 The Kale Authors\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *      http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\n\n/*-----------------------------------------------------------------------------\n| Icons\n|----------------------------------------------------------------------------*/\n\n.jp-kale-logo {\n  background-image: url(\"data:image/svg+xml,%3Csvg id='Kale_Logo' data-name='Kale Logo' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%23753bbd%7D%3C/style%3E%3C/defs%3E%3Cpath class='cls-1' d='M25.37 14.35a14.94 14.94 0 0110.7-6c0-.08-.08-.16-.14-.23a5 5 0 00-1.66-1.35 3.79 3.79 0 01-.54-.35 3.29 3.29 0 01-.32-.64 4.7 4.7 0 00-1.08-1.72 5.22 5.22 0 00-2-1 4.1 4.1 0 01-.56-.22 3.5 3.5 0 01-.53-.62A4.49 4.49 0 0027.81.81 4.48 4.48 0 0025.65.3a1.42 1.42 0 00-.28 0zM22.37.34a1.29 1.29 0 00-.28 0 4.48 4.48 0 00-2.16.52 4.49 4.49 0 00-1.47 1.42 3.51 3.51 0 01-.53.62 4.1 4.1 0 01-.56.22 5.22 5.22 0 00-2 1 4.69 4.69 0 00-1.08 1.72 3.3 3.3 0 01-.32.64 3.79 3.79 0 01-.54.35 5 5 0 00-1.66 1.35 4.67 4.67 0 00-.73 1.92 3.36 3.36 0 01-.18.67 3.61 3.61 0 01-.46.46 4.83 4.83 0 00-1.3 1.64 4.6 4.6 0 00-.29 2.06 3.33 3.33 0 010 .68 3.54 3.54 0 01-.34.55 4.7 4.7 0 00-.9 1.95 4.56 4.56 0 00.25 2.08 4 4 0 01.16.63c0 .09-.11.26-.17.38a3.72 3.72 0 00-.48 1.8A3.88 3.88 0 008 24.85l.16.27c0 .1-.07.25-.1.35a3.67 3.67 0 00-.18 1.87 3.88 3.88 0 001 1.75l.2.24v.38a3.62 3.62 0 00.23 1.9 3.91 3.91 0 001.4 1.52l.26.19c0 .1.06.26.08.38a3.64 3.64 0 00.74 1.8 4 4 0 001.79 1.11l.31.12c.06.09.14.24.19.36a3.72 3.72 0 001.21 1.52 6.55 6.55 0 002.34.64 11.24 11.24 0 013.74 8.39h1zM39.58 25.12l.16-.27A3.88 3.88 0 0040.4 23a3.73 3.73 0 00-.47-1.79 3.8 3.8 0 01-.17-.38 4.06 4.06 0 01.16-.63 4.56 4.56 0 00.25-2.08 4.69 4.69 0 00-.9-1.95 3.56 3.56 0 01-.34-.55 3.34 3.34 0 010-.68 4.6 4.6 0 00-.29-2.06 4.52 4.52 0 00-1.22-1.55h-.09a12 12 0 00-11.94 11.59A14.89 14.89 0 0137.27 33a3.57 3.57 0 001.2-1.37 3.62 3.62 0 00.23-1.9v-.38l.2-.24a3.89 3.89 0 001-1.75 3.66 3.66 0 00-.18-1.87c-.07-.12-.12-.27-.14-.37zM25.37 26v21.63h1a11.19 11.19 0 013.81-8.39 6.55 6.55 0 002.34-.64 3.71 3.71 0 001.21-1.52c.06-.11.14-.27.19-.36l.31-.12a7 7 0 00.81-.34C34.26 31 30.1 26.73 25.37 26z'/%3E%3C/svg%3E\");\n}\n\n/*-----------------------------------------------------------------------------\n| Components\n|----------------------------------------------------------------------------*/\n\n.kale-component {\n  padding: 5px 0px;\n}\n\n.kale-header {\n  color: #477ef0;\n  letter-spacing: 0.4px;\n  /*margin-top: 8px;*/\n  padding: 5px;\n  font-size: var(--jp-ui-font-size2);\n  font-weight: 800;\n  /* text-transform: uppercase; */\n  /*border-bottom: solid var(--jp-border-width) var(--jp-border-color2);*/\n}\n\n.kale-header.katib-dialog-header {\n  padding: 5px 0;\n  margin: 20px 0 10px 0;\n}\n\n.kale-header.katib-headers-tooltip {\n  height: 0.7em;\n  opacity: 0.75;\n}\n\n.kale-header-switch {\n  flex: 0 0 auto;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */\n  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */\n  display: -ms-flexbox; /* TWEENER - IE 10 */\n  display: -webkit-flex; /* NEW - Chrome */\n  display: flex;\n}\n\n.kale-footer {\n  padding: 5px 0px;\n  bottom: 0;\n  width: 100%;\n  z-index: 10;\n  display: flex;\n  flex-direction: column;\n  border-top: 1px solid var(--jp-border-color2);\n  margin-top: auto;\n}\n\n/*-----------------------------------------------------------------------------\n| Deploy Button\n|----------------------------------------------------------------------------*/\n\n.kale-panel {\n  min-width: 300px !important;\n}\n\n.kubeflow-widget {\n  flex-direction: column;\n  min-width: var(--jp-sidebar-min-width);\n  color: var(--jp-ui-font-color1);\n  background: var(--jp-layout-color1);\n  font-size: var(--jp-ui-font-size1);\n  overflow: auto;\n  height: 100%;\n  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */\n  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */\n  display: -ms-flexbox; /* TWEENER - IE 10 */\n  display: -webkit-flex; /* NEW - Chrome */\n  display: flex;\n}\n\n.kubeflow-widget-content {\n  min-width: var(--jp-sidebar-min-width);\n  /* height: calc(100% - 42px); */\n  overflow: auto;\n  /* border-bottom: 1px solid var(--jp-border-color2); */\n}\n\n/*-----------------------------------------------------------------------------\n| Deploy Button\n|----------------------------------------------------------------------------*/\n/*\n.deploy-button {\n\n}\n*/\n\n.deploy-button button {\n  height: 30px;\n  width: 95%;\n  border-radius: 2px;\n  font-size: 12px;\n  border-width: 0;\n  padding: 2px 4px;\n  font-weight: 600;\n  text-transform: uppercase;\n}\n\n/*-----------------------------------------------------------------------------\n| Inputs\n|----------------------------------------------------------------------------*/\n\n.input-container {\n  padding: 10px 12px;\n  z-index: 2;\n}\n\n.input-wrapper {\n  margin-top: 5px;\n  overflow: overlay;\n  padding: 0 9px;\n  background-color: var(--jp-input-active-background);\n  /*height: 30px;*/\n  box-shadow: inset 0 0 0 var(--jp-border-width) var(--jp-input-border-color);\n}\n\n.input-focus {\n  box-shadow: inset 0 0 0 1px var(--jp-input-active-box-shadow-color),\n    inset 0 0 0 3px var(--jp-input-active-box-shadow-color);\n}\n\n.input-wrapper input,\ntextarea {\n  background: transparent;\n  width: calc(100% - 18px);\n  float: left;\n  border: none;\n  outline: none;\n  font-size: var(--jp-ui-font-size1);\n  color: var(--jp-ui-font-color0);\n  line-height: var(--jp-private-commandpalette-search-height);\n}\n\n.input-wrapper input::-webkit-input-placeholder,\n.input-wrapper input::-moz-placeholder,\n.input-wrapper input:-ms-input-placeholder {\n  color: var(--jp-ui-font-color3);\n  font-size: var(--jp-ui-font-size1);\n}\n\n.input-error-label {\n  color: var(--jp-error-color0);\n  padding: 5px 10px 0;\n  font-size: var(--jp-ui-font-size0);\n  line-height: normal;\n}\n\n.volume-container {\n  border-top: 2px solid var(--jp-layout-color2);\n}\n\n.volume-container:last-child {\n  border-bottom: 2px solid var(--jp-layout-color2);\n}\n\n/*https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container*/\n.toolbar {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: none;\n  height: auto;\n  box-shadow: none;\n}\n\n.minimal-toolbar-button {\n  box-shadow: none;\n  background: none;\n  background: var(--jp-layout-color1);\n  border: none;\n  appearance: none;\n  -moz-appearance: none;\n  padding: 0px 6px;\n  height: 24px;\n  border-radius: var(--jp-border-radius);\n  display: flex;\n  cursor: pointer;\n}\n\n.minimal-toolbar-button:hover {\n  background-color: var(--jp-layout-color2);\n}\n\n.volumes-select {\n  width: 80%;\n}\n\n.react-select-container {\n  position: relative;\n  box-sizing: border-box;\n  margin: 5px 0;\n}\n\n.react-select__indicator {\n  padding: 0 !important;\n}\n\n.react-select__control {\n  min-height: 0 !important;\n}\n\n.p-mod-hidden {\n  display: none;\n}\n\n.prev-blockname-container {\n  z-index: 2;\n  color: var(--jp-info-color0);\n  padding: 5px 22px 0;\n  font-size: var(--jp-ui-font-size0);\n  line-height: normal;\n}\n\n.switch-label {\n  display: table-cell;\n  vertical-align: middle;\n  padding-right: 10px;\n  font-size: var(--jp-ui-font-size2);\n}\n\n.skip-cell-info-text {\n  padding: 0 10px 5px 10px;\n  font-size: var(--jp-ui-font-size0);\n  line-height: normal;\n}\n\n.jp-Dialog-content {\n  max-width: 75% !important;\n}\n\n.add-button {\n  padding: 5px;\n  margin-top: 10px;\n}\n\n.delete-button button {\n  padding: 5px 0px;\n  margin: 0px 10px;\n  min-width: 0px;\n  min-height: 0px;\n  width: 80%;\n  height: 80%;\n  border-radius: 50%;\n  color: rgb(255, 0, 25);\n  background: white;\n  box-shadow: none;\n}\n\n.delete-button button:hover {\n  color: rgb(189, 21, 35);\n}\n\n.delete-button svg {\n  transform: scale(0.8);\n}\n\na {\n  text-decoration: underline;\n  color: #477ef0;\n}\n\n.pre {\n  white-space: pre;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.deploy-progress {\n  border-top: 2px solid var(--jp-border-color2);\n}\n\n.deploy-progress:last-child {\n  border-bottom: 2px solid var(--jp-border-color2);\n}\n\n.deploy-progress-label {\n  /* min-width: 116px; */\n  white-space: pre;\n}\n\n.labels-indented p {\n  padding-left: 20px;\n}\n\n.deploy-progress-value {\n  width: 100%;\n  display: flex;\n  align-items: center;\n}\n\n.deploy-progress-value a {\n  height: 16px;\n  display: flex;\n  margin-left: 5px;\n}\n\n.deploy-progress-value svg {\n  margin-left: 0.25rem;\n}\n\n.deploy-progress-value .MuiLinearProgress-root {\n  margin-left: 0.25rem;\n  width: 100%;\n}\n\n.deploy-progress-row {\n  margin: 0 10px;\n  display: flex;\n  align-items: center;\n  padding: 10px 0;\n  border-bottom: 1px solid var(--jp-border-color2);\n}\n\n.deploy-progress-row:last-child {\n  border-bottom: none;\n  margin-bottom: 6px;\n}\n\n.kale-inline-cell-metadata {\n  /* FIXME: find a way to calculate margin */\n  margin-left: 73px;\n  margin-top: 8px;\n  margin-bottom: 4px;\n  display: flex;\n  align-items: center;\n}\n\n.kale-inline-cell-dependency {\n  border-radius: 50%;\n  width: 10px;\n  height: 10px;\n  display: inline-block;\n  margin-left: 4px;\n}\n\n.jp-Notebook .jp-Cell.kale-merged-cell {\n  padding-top: 0;\n}\n\n.kale-metadata-editor-wrapper {\n  margin-left: 73px;\n  position: relative;\n}\n\n.kale-editor-toggle {\n  border: 0;\n  width: 16px;\n  height: 16px;\n  padding: 0;\n  cursor: pointer;\n  position: absolute;\n  z-index: 3;\n  right: 3px;\n  top: 3px;\n  color: var(--jp-inverse-layout-color3);\n}\n\n.kale-editor-toggle > svg {\n  width: 100%;\n  height: auto;\n}\n\n.kale-editor-toggle > svg {\n  background-color: var(--jp-cell-editor-background);\n}\n\n.jp-Notebook.jp-mod-editMode\n  .jp-Cell.jp-mod-selected\n  .kale-editor-toggle\n  > svg {\n  background-color: #fff;\n}\n\n.kale-cell-metadata-editor {\n  margin-bottom: 4px;\n  display: flex;\n  border: 0px solid var(--md-grey-400);\n  align-items: center;\n}\n\n.kale-cell-metadata-editor > .MuiFormControl-root {\n  margin-left: 4px;\n  margin-right: 4px;\n}\n\n.kale-cell-metadata-editor-helper-text {\n  color: darkgoldenrod;\n  margin-bottom: 4px;\n  display: flex;\n  align-items: center;\n  padding-left: 6px;\n}\n\n.kale-metadata-editor-wrapper.opened .kale-editor-toggle {\n  position: relative;\n  float: right;\n  top: 4px;\n  right: 50%;\n  margin-right: -11px;\n}\n\n.kale-metadata-editor-wrapper.opened .kale-editor-toggle > svg {\n  background-color: #fff;\n}\n\n.kale-editor-toggle:hover > svg {\n  background-color: var(--jp-layout-color2);\n}\n\n.kale-reserved-cell {\n  border-radius: 0 !important;\n}\n\n.kale-chip.MuiChip-root {\n  height: 19px;\n  color: #fff;\n}\n\n.kale-chip-select.MuiChip-root {\n  height: 18px;\n  margin-right: 1px;\n  margin-bottom: 1px;\n  line-height: 18px;\n}\n\n.kale-metadata-editor-wrapper:not(.kale-is-step)\n  .kale-cell-metadata-editor\n  > div:first-child {\n  width: 100%;\n  border-right: none;\n}\n\n.MuiButtonBase-root.Mui-disabled.menu-item-tooltip {\n  pointer-events: auto;\n  padding: 0;\n}\n\n.MuiButtonBase-root.Mui-disabled.menu-item-tooltip .menu-item-label {\n  padding: 8px 16px;\n  width: 100%;\n}\n\n.menu-item-label {\n  width: 100%;\n}\n\n/* this class needs to be applied to every material switch we use because\n  jp lab overrides the height of every input checkbox component.\n*/\n.material-switch {\n  color: white;\n}\n\n.material-switch input {\n  height: 100%;\n}\n\n.dialog-body {\n  white-space: pre;\n}\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./style/index.css"],"names":[],"mappings":"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","sourcesContent":["/*\n * Copyright 2019-2020 The Kale Authors\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\");\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *      http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n */\n\n/*-----------------------------------------------------------------------------\n| Icons\n|----------------------------------------------------------------------------*/\n\n.jp-kale-logo {\n  background-image: url(\"data:image/svg+xml,%3Csvg id='Kale_Logo' data-name='Kale Logo' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill:%23753bbd%7D%3C/style%3E%3C/defs%3E%3Cpath class='cls-1' d='M25.37 14.35a14.94 14.94 0 0110.7-6c0-.08-.08-.16-.14-.23a5 5 0 00-1.66-1.35 3.79 3.79 0 01-.54-.35 3.29 3.29 0 01-.32-.64 4.7 4.7 0 00-1.08-1.72 5.22 5.22 0 00-2-1 4.1 4.1 0 01-.56-.22 3.5 3.5 0 01-.53-.62A4.49 4.49 0 0027.81.81 4.48 4.48 0 0025.65.3a1.42 1.42 0 00-.28 0zM22.37.34a1.29 1.29 0 00-.28 0 4.48 4.48 0 00-2.16.52 4.49 4.49 0 00-1.47 1.42 3.51 3.51 0 01-.53.62 4.1 4.1 0 01-.56.22 5.22 5.22 0 00-2 1 4.69 4.69 0 00-1.08 1.72 3.3 3.3 0 01-.32.64 3.79 3.79 0 01-.54.35 5 5 0 00-1.66 1.35 4.67 4.67 0 00-.73 1.92 3.36 3.36 0 01-.18.67 3.61 3.61 0 01-.46.46 4.83 4.83 0 00-1.3 1.64 4.6 4.6 0 00-.29 2.06 3.33 3.33 0 010 .68 3.54 3.54 0 01-.34.55 4.7 4.7 0 00-.9 1.95 4.56 4.56 0 00.25 2.08 4 4 0 01.16.63c0 .09-.11.26-.17.38a3.72 3.72 0 00-.48 1.8A3.88 3.88 0 008 24.85l.16.27c0 .1-.07.25-.1.35a3.67 3.67 0 00-.18 1.87 3.88 3.88 0 001 1.75l.2.24v.38a3.62 3.62 0 00.23 1.9 3.91 3.91 0 001.4 1.52l.26.19c0 .1.06.26.08.38a3.64 3.64 0 00.74 1.8 4 4 0 001.79 1.11l.31.12c.06.09.14.24.19.36a3.72 3.72 0 001.21 1.52 6.55 6.55 0 002.34.64 11.24 11.24 0 013.74 8.39h1zM39.58 25.12l.16-.27A3.88 3.88 0 0040.4 23a3.73 3.73 0 00-.47-1.79 3.8 3.8 0 01-.17-.38 4.06 4.06 0 01.16-.63 4.56 4.56 0 00.25-2.08 4.69 4.69 0 00-.9-1.95 3.56 3.56 0 01-.34-.55 3.34 3.34 0 010-.68 4.6 4.6 0 00-.29-2.06 4.52 4.52 0 00-1.22-1.55h-.09a12 12 0 00-11.94 11.59A14.89 14.89 0 0137.27 33a3.57 3.57 0 001.2-1.37 3.62 3.62 0 00.23-1.9v-.38l.2-.24a3.89 3.89 0 001-1.75 3.66 3.66 0 00-.18-1.87c-.07-.12-.12-.27-.14-.37zM25.37 26v21.63h1a11.19 11.19 0 013.81-8.39 6.55 6.55 0 002.34-.64 3.71 3.71 0 001.21-1.52c.06-.11.14-.27.19-.36l.31-.12a7 7 0 00.81-.34C34.26 31 30.1 26.73 25.37 26z'/%3E%3C/svg%3E\");\n}\n\n/*-----------------------------------------------------------------------------\n| Components\n|----------------------------------------------------------------------------*/\n\n.kale-component {\n  padding: 5px 0px;\n}\n\n.kale-header {\n  color: #477ef0;\n  letter-spacing: 0.4px;\n  /*margin-top: 8px;*/\n  padding: 5px;\n  font-size: var(--jp-ui-font-size2);\n  font-weight: 800;\n  /* text-transform: uppercase; */\n  /*border-bottom: solid var(--jp-border-width) var(--jp-border-color2);*/\n}\n\n.kale-header.katib-dialog-header {\n  padding: 5px 0;\n  margin: 20px 0 10px 0;\n}\n\n.kale-header.katib-headers-tooltip {\n  height: 0.7em;\n  opacity: 0.75;\n}\n\n.kale-header-switch {\n  flex: 0 0 auto;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */\n  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */\n  display: -ms-flexbox; /* TWEENER - IE 10 */\n  display: -webkit-flex; /* NEW - Chrome */\n  display: flex;\n}\n\n.kale-footer {\n  padding: 5px 0px;\n  bottom: 0;\n  width: 100%;\n  z-index: 10;\n  display: flex;\n  flex-direction: column;\n  border-top: 1px solid var(--jp-border-color2);\n  margin-top: auto;\n}\n\n/*-----------------------------------------------------------------------------\n| Deploy Button\n|----------------------------------------------------------------------------*/\n\n.kale-panel {\n  min-width: 300px !important;\n}\n\n.kubeflow-widget {\n  flex-direction: column;\n  min-width: var(--jp-sidebar-min-width);\n  color: var(--jp-ui-font-color1);\n  background: var(--jp-layout-color1);\n  font-size: var(--jp-ui-font-size1);\n  overflow: auto;\n  height: 100%;\n  display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */\n  display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */\n  display: -ms-flexbox; /* TWEENER - IE 10 */\n  display: -webkit-flex; /* NEW - Chrome */\n  display: flex;\n}\n\n.kubeflow-widget-content {\n  min-width: var(--jp-sidebar-min-width);\n  /* height: calc(100% - 42px); */\n  overflow: auto;\n  /* border-bottom: 1px solid var(--jp-border-color2); */\n}\n\n/*-----------------------------------------------------------------------------\n| Deploy Button\n|----------------------------------------------------------------------------*/\n/*\n.deploy-button {\n\n}\n*/\n\n.deploy-button button {\n  height: 30px;\n  width: 95%;\n  border-radius: 2px;\n  font-size: 12px;\n  border-width: 0;\n  padding: 2px 4px;\n  font-weight: 600;\n  text-transform: uppercase;\n}\n\n/*-----------------------------------------------------------------------------\n| Inputs\n|----------------------------------------------------------------------------*/\n\n.input-container {\n  padding: 10px 12px;\n  z-index: 2;\n}\n\n.input-wrapper {\n  margin-top: 5px;\n  overflow: overlay;\n  padding: 0 9px;\n  background-color: var(--jp-input-active-background);\n  /*height: 30px;*/\n  box-shadow: inset 0 0 0 var(--jp-border-width) var(--jp-input-border-color);\n}\n\n.input-focus {\n  box-shadow: inset 0 0 0 1px var(--jp-input-active-box-shadow-color),\n    inset 0 0 0 3px var(--jp-input-active-box-shadow-color);\n}\n\n.input-wrapper input,\ntextarea {\n  background: transparent;\n  width: calc(100% - 18px);\n  float: left;\n  border: none;\n  outline: none;\n  font-size: var(--jp-ui-font-size1);\n  color: var(--jp-ui-font-color0);\n  line-height: var(--jp-private-commandpalette-search-height);\n}\n\n.input-wrapper input::-webkit-input-placeholder,\n.input-wrapper input::-moz-placeholder,\n.input-wrapper input:-ms-input-placeholder {\n  color: var(--jp-ui-font-color3);\n  font-size: var(--jp-ui-font-size1);\n}\n\n.input-error-label {\n  color: var(--jp-error-color0);\n  padding: 5px 10px 0;\n  font-size: var(--jp-ui-font-size0);\n  line-height: normal;\n}\n\n.volume-container {\n  border-top: 2px solid var(--jp-layout-color2);\n}\n\n.volume-container:last-child {\n  border-bottom: 2px solid var(--jp-layout-color2);\n}\n\n/*https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container*/\n.toolbar {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: none;\n  height: auto;\n  box-shadow: none;\n}\n\n.minimal-toolbar-button {\n  box-shadow: none;\n  background: none;\n  background: var(--jp-layout-color1);\n  border: none;\n  appearance: none;\n  -moz-appearance: none;\n  padding: 0px 6px;\n  height: 24px;\n  border-radius: var(--jp-border-radius);\n  display: flex;\n  cursor: pointer;\n}\n\n.minimal-toolbar-button:hover {\n  background-color: var(--jp-layout-color2);\n}\n\n.volumes-select {\n  width: 80%;\n}\n\n.react-select-container {\n  position: relative;\n  box-sizing: border-box;\n  margin: 5px 0;\n}\n\n.react-select__indicator {\n  padding: 0 !important;\n}\n\n.react-select__control {\n  min-height: 0 !important;\n}\n\n.p-mod-hidden {\n  display: none;\n}\n\n.prev-blockname-container {\n  z-index: 2;\n  color: var(--jp-info-color0);\n  padding: 5px 22px 0;\n  font-size: var(--jp-ui-font-size0);\n  line-height: normal;\n}\n\n.switch-label {\n  display: table-cell;\n  vertical-align: middle;\n  padding-right: 10px;\n  font-size: var(--jp-ui-font-size2);\n}\n\n.skip-cell-info-text {\n  padding: 0 10px 5px 10px;\n  font-size: var(--jp-ui-font-size0);\n  line-height: normal;\n}\n\n.jp-Dialog-content {\n  max-width: 75% !important;\n}\n\n.add-button {\n  padding: 5px;\n  margin-top: 10px;\n}\n\n.delete-button button {\n  padding: 5px 0px;\n  margin: 0px 10px;\n  min-width: 0px;\n  min-height: 0px;\n  width: 80%;\n  height: 80%;\n  border-radius: 50%;\n  color: rgb(255, 0, 25);\n  background: white;\n  box-shadow: none;\n}\n\n.delete-button button:hover {\n  color: rgb(189, 21, 35);\n}\n\n.delete-button svg {\n  transform: scale(0.8);\n}\n\na {\n  text-decoration: underline;\n  color: #477ef0;\n}\n\n.pre {\n  white-space: pre;\n}\n\n.hidden {\n  display: none !important;\n}\n\n.deploy-progress {\n  border-top: 2px solid var(--jp-border-color2);\n}\n\n.deploy-progress:last-child {\n  border-bottom: 2px solid var(--jp-border-color2);\n}\n\n.deploy-progress-label {\n  /* min-width: 116px; */\n  white-space: pre;\n}\n\n.labels-indented p {\n  padding-left: 20px;\n}\n\n.deploy-progress-value {\n  width: 100%;\n  display: flex;\n  align-items: center;\n}\n\n.deploy-progress-value a {\n  height: 16px;\n  display: flex;\n  margin-left: 5px;\n}\n\n.deploy-progress-value svg {\n  margin-left: 0.25rem;\n}\n\n.deploy-progress-value .MuiLinearProgress-root {\n  margin-left: 0.25rem;\n  width: 100%;\n}\n\n.deploy-progress-row {\n  margin: 0 10px;\n  display: flex;\n  align-items: center;\n  padding: 10px 0;\n  border-bottom: 1px solid var(--jp-border-color2);\n}\n\n.deploy-progress-row:last-child {\n  border-bottom: none;\n  margin-bottom: 6px;\n}\n\n.kale-inline-cell-metadata {\n  /* FIXME: find a way to calculate margin */\n  margin-left: 73px;\n  margin-top: 8px;\n  margin-bottom: 4px;\n  display: flex;\n  align-items: center;\n}\n\n.kale-inline-cell-dependency {\n  border-radius: 50%;\n  width: 10px;\n  height: 10px;\n  display: inline-block;\n  margin-left: 4px;\n}\n\n.jp-Notebook .jp-Cell.kale-merged-cell {\n  padding-top: 0;\n}\n\n.kale-metadata-editor-wrapper {\n  margin-left: 73px;\n  position: relative;\n}\n\n.kale-editor-toggle {\n  border: 0;\n  width: 16px;\n  height: 16px;\n  padding: 0;\n  cursor: pointer;\n  position: absolute;\n  z-index: 3;\n  right: 3px;\n  top: 3px;\n  color: var(--jp-inverse-layout-color3);\n}\n\n.kale-editor-toggle > svg {\n  width: 100%;\n  height: auto;\n}\n\n.kale-editor-toggle > svg {\n  background-color: var(--jp-cell-editor-background);\n}\n\n.jp-Notebook.jp-mod-editMode\n  .jp-Cell.jp-mod-selected\n  .kale-editor-toggle\n  > svg {\n  background-color: #fff;\n}\n\n.kale-cell-metadata-editor {\n  margin-bottom: 4px;\n  display: flex;\n  border: 0px solid var(--md-grey-400);\n  align-items: center;\n}\n\n.kale-cell-metadata-editor > .MuiFormControl-root {\n  margin-left: 4px;\n  margin-right: 4px;\n}\n\n.kale-cell-metadata-editor-helper-text {\n  color: darkgoldenrod;\n  margin-bottom: 4px;\n  display: flex;\n  align-items: center;\n  padding-left: 6px;\n}\n\n.kale-metadata-editor-wrapper.opened .kale-editor-toggle {\n  position: relative;\n  float: right;\n  top: 4px;\n  right: 50%;\n  margin-right: -11px;\n}\n\n.kale-metadata-editor-wrapper.opened .kale-editor-toggle > svg {\n  background-color: #fff;\n}\n\n.kale-editor-toggle:hover > svg {\n  background-color: var(--jp-layout-color2);\n}\n\n.kale-reserved-cell {\n  border-radius: 0 !important;\n}\n\n.kale-chip.MuiChip-root {\n  height: 19px;\n  color: #fff;\n}\n\n.kale-chip-select.MuiChip-root {\n  height: 18px;\n  margin-right: 1px;\n  margin-bottom: 1px;\n  line-height: 18px;\n}\n\n.kale-metadata-editor-wrapper:not(.kale-is-step)\n  .kale-cell-metadata-editor\n  > div:first-child {\n  width: 100%;\n  border-right: none;\n}\n\n.MuiButtonBase-root.Mui-disabled.menu-item-tooltip {\n  pointer-events: auto;\n  padding: 0;\n}\n\n.MuiButtonBase-root.Mui-disabled.menu-item-tooltip .menu-item-label {\n  padding: 8px 16px;\n  width: 100%;\n}\n\n.menu-item-label {\n  width: 100%;\n}\n\n/* this class needs to be applied to every material switch we use because\n  jp lab overrides the height of every input checkbox component.\n*/\n.material-switch {\n  color: white;\n}\n\n.material-switch input {\n  height: 100%;\n}\n\n.dialog-body {\n  white-space: pre;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./style/index.css":
+/*!*************************!*\
+  !*** ./style/index.css ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/@jupyterlab/builder/node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_jupyterlab_builder_node_modules_css_loader_dist_cjs_js_index_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../node_modules/@jupyterlab/builder/node_modules/css-loader/dist/cjs.js!./index.css */ "./node_modules/@jupyterlab/builder/node_modules/css-loader/dist/cjs.js!./style/index.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_jupyterlab_builder_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_jupyterlab_builder_node_modules_css_loader_dist_cjs_js_index_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_jupyterlab_builder_node_modules_css_loader_dist_cjs_js_index_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_jupyterlab_builder_node_modules_css_loader_dist_cjs_js_index_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_jupyterlab_builder_node_modules_css_loader_dist_cjs_js_index_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
@@ -7035,4 +7035,4 @@ module.exports = "data:image/svg+xml,%3Csvg id=%27Kale_Logo%27 data-name=%27Kale
 /***/ })
 
 }]);
-//# sourceMappingURL=lib_src_index_js.aaf254bee58a30d373ea.js.map
+//# sourceMappingURL=lib_index_js.1071a53844de67be78d9.js.map

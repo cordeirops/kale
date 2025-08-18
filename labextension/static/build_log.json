@@ -123,8 +123,8 @@
           },
           "filename": "remoteEntry.[contenthash].js",
           "exposes": {
-            "./index": "/Users/ederign/src/kubeflow/kale/fe/kale/labextension/lib/src/index.js",
-            "./extension": "/Users/ederign/src/kubeflow/kale/fe/kale/labextension/lib/src/index.js"
+            "./index": "/Users/ederign/src/kubeflow/kale/fe/kale/labextension/lib/index.js",
+            "./extension": "/Users/ederign/src/kubeflow/kale/fe/kale/labextension/lib/index.js"
           },
           "shared": {
             "@jupyterlab/application": {
@@ -718,7 +718,7 @@
             "kubeflow-kale-labextension": {
               "version": "0.7.0",
               "singleton": true,
-              "import": "/Users/ederign/src/kubeflow/kale/fe/kale/labextension/lib/src/index.js"
+              "import": "/Users/ederign/src/kubeflow/kale/fe/kale/labextension/lib/index.js"
             }
           }
         }
