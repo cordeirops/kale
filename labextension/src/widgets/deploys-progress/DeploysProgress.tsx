@@ -44,6 +44,7 @@ export type DeployProgressState = {
   deleted?: boolean;
   docManager?: IDocumentManager;
   namespace?: string;
+  message?: string;
 };
 
 interface DeploysProgress {
@@ -51,7 +52,9 @@ interface DeploysProgress {
   onPanelRemove: (index: number) => void;
 }
 
-export const DeploysProgress: React.FunctionComponent<DeploysProgress> = props => {
+export const DeploysProgress: React.FunctionComponent<
+  DeploysProgress
+> = props => {
   const [items, setItems] = React.useState([]);
   const getItems = (_deploys: any) => {
     return Object.entries(_deploys)

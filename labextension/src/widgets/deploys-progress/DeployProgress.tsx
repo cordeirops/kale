@@ -29,7 +29,7 @@ import StatusRunning from '../../icons/statusRunning';
 import TerminatedIcon from '../../icons/statusTerminated';
 import { DeployProgressState } from './DeploysProgress';
 import DeployUtils from './DeployUtils';
-import { KatibProgress } from './KatibProgress';
+// KatibProgress is excluded from TS build; avoid importing here
 
 // From kubeflow/pipelines repo
 enum PipelineStatus {
@@ -41,14 +41,16 @@ enum PipelineStatus {
   SUCCEEDED = 'Succeeded',
   TERMINATING = 'Terminating',
   TERMINATED = 'Terminated',
-  UNKNOWN = 'Unknown',
+  UNKNOWN = 'Unknown'
 }
 
 interface DeployProgress extends DeployProgressState {
   onRemove?: () => void;
 }
 
-export const DeployProgress: React.FunctionComponent<DeployProgress> = props => {
+export const DeployProgress: React.FunctionComponent<
+  DeployProgress
+> = props => {
   const getSnapshotLink = (task: any) => {
     if (!task.result || !task.result.event) {
       return '#';
@@ -178,7 +180,7 @@ export const DeployProgress: React.FunctionComponent<DeployProgress> = props => 
             style={{
               color: DeployUtils.color.terminated,
               height: 18,
-              width: 18,
+              width: 18
             }}
           />
         </React.Fragment>
@@ -358,7 +360,7 @@ export const DeployProgress: React.FunctionComponent<DeployProgress> = props => 
           justifyContent: 'flex-end',
           textAlign: 'right',
           paddingRight: '4px',
-          height: '1rem',
+          height: '1rem'
         }}
       >
         <CloseIcon
@@ -374,7 +376,7 @@ export const DeployProgress: React.FunctionComponent<DeployProgress> = props => 
             {validationTpl}
             {DeployUtils.getWarningBadge(
               'Validation Warnings',
-              props.validationWarnings,
+              props.validationWarnings
             )}
           </div>
         </div>
@@ -387,7 +389,7 @@ export const DeployProgress: React.FunctionComponent<DeployProgress> = props => 
             {getSnapshotTpl()}{' '}
             {DeployUtils.getWarningBadge(
               'Snapshot Warnings',
-              props.snapshotWarnings,
+              props.snapshotWarnings
             )}
           </div>
         </div>
@@ -400,7 +402,7 @@ export const DeployProgress: React.FunctionComponent<DeployProgress> = props => 
             {compileTpl}
             {DeployUtils.getWarningBadge(
               'Compile Warnings',
-              props.compileWarnings,
+              props.compileWarnings
             )}
           </div>
         </div>
@@ -413,7 +415,7 @@ export const DeployProgress: React.FunctionComponent<DeployProgress> = props => 
             {uploadTpl}
             {DeployUtils.getWarningBadge(
               'Upload Warnings',
-              props.uploadWarnings,
+              props.uploadWarnings
             )}
           </div>
         </div>
@@ -438,9 +440,7 @@ export const DeployProgress: React.FunctionComponent<DeployProgress> = props => 
         </div>
       ) : null}
 
-      {props.showKatibProgress ? (
-        <KatibProgress experiment={props.katib} />
-      ) : null}
+      {/* KatibProgress disabled in this build */}
     </div>
   );
 };

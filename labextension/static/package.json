@@ -84,7 +84,7 @@
   "devDependencies": {
     "@jupyterlab/builder": "^4.0.0",
     "@types/json-schema": "^7.0.11",
-    "@types/react": "^18.0.0",
+    "@types/react": "^18.0.26",
     "@types/react-addons-linked-state-mixin": "^0.14.22",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
@@ -112,7 +112,11 @@
     "access": "public"
   },
   "jupyterlab": {
-    "extension": true
+    "extension": true,
+    "_build": {
+      "load": "static/remoteEntry.296a3e7f1d8cbb1eb73d.js",
+      "extension": "./extension"
+    }
   },
   "husky": {
     "hooks": {
