@@ -3,19 +3,36 @@ name: Publish release artifacts
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Git ref (tag or branch) to publish or test'
+        required: true
+        type: string
+      mode:
+        description: 'Where to publish artifacts'
+        required: true
+        default: release
+        type: choice
+        options:
+          - release
+          - test
 
 permissions:
   contents: read
 
 jobs:
   publish-backend:
-    if: ${{ !github.event.release.prerelease }}
+    if: ${{ github.event_name != 'release' || !github.event.release.prerelease }}
     runs-on: ubuntu-latest
+    env:
+      RELEASE_MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.mode || 'release' }}
+      RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag || github.event.release.tag_name }}
     steps:
       - name: Check out release tag
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.release.tag_name }}
+          ref: ${{ env.RELEASE_TAG }}
           fetch-depth: 0
 
       - name: Set up Python
@@ -33,22 +50,33 @@ jobs:
         run: python -m build
 
       - name: Publish backend to PyPI
+        if: env.RELEASE_MODE == 'release'
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           packages_dir: backend/dist
           password: ${{ secrets.PYPI_API_TOKEN }}
 
+      - name: Publish backend to TestPyPI
+        if: env.RELEASE_MODE == 'test'
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages_dir: backend/dist
+          repository-url: https://test.pypi.org/legacy/
+          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+
   publish-labextension:
-    if: ${{ !github.event.release.prerelease }}
+    if: ${{ github.event_name != 'release' || !github.event.release.prerelease }}
     needs: publish-backend
     runs-on: ubuntu-latest
     env:
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      RELEASE_MODE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.mode || 'release' }}
+      RELEASE_TAG: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag || github.event.release.tag_name }}
+      NODE_AUTH_TOKEN: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'test' && secrets.TEST_NPM_TOKEN || secrets.NPM_TOKEN }}
     steps:
       - name: Check out release tag
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.release.tag_name }}
+          ref: ${{ env.RELEASE_TAG }}
           fetch-depth: 0
 
       - name: Set up Node.js
@@ -79,5 +107,14 @@ jobs:
         run: jlpm build:prod
 
       - name: Publish labextension to npm
+        if: env.RELEASE_MODE == 'release'
         working-directory: labextension
         run: npm publish
+
+      - name: Exercise npm publish workflow (dry run)
+        if: env.RELEASE_MODE == 'test'
+        working-directory: labextension
+        run: |
+          npm publish --dry-run
+          mkdir -p dist
+          npm pack --pack-destination dist
