@@ -192,7 +192,7 @@ def run_pipeline(experiment_name: str, pipeline_id: str, run_name: str = None,
             version_name = "default"
     except Exception:
         log.debug("Could not retrieve pipeline version with " 
-                  "ID '%s'. Using 'unknown'.",version_id)
+                  "ID '%s'. Using 'unknown'.", version_id)
         version_name = "unknown"
 
     if not run_name:
