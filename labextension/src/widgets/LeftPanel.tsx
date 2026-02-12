@@ -185,7 +185,8 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
 
   activateRunDeployState = (type: string) => {
     if (!this.state.runDeployment) {
-      this.setState({ runDeployment: true, deploymentType: type });
+      // Clear all previous deploys when starting a new one, so only the latest panel is shown
+      this.setState({ runDeployment: true, deploymentType: type, deploys: {} });
       this.runDeploymentCommand();
     }
   };
