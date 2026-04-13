@@ -20,10 +20,11 @@
 
 set -euo pipefail
 
-CLUSTER_NAME="${1:-kale-kfp}"
-KFP_VERSION="${2:-2.16.0}"
-LOCAL_PORT="${3:-8080}"
-PID_FILE="${4:-.kfp-dev-pf.pid}"
+COMMAND="${1:-setup}"   # setup | upgrade
+CLUSTER_NAME="${2:-kale-kfp}"
+KFP_VERSION="${3:-2.16.0}"
+LOCAL_PORT="${4:-8080}"
+PID_FILE="${5:-.kfp-dev-pf.pid}"
 
 BLUE='\033[0;34m'
 GREEN='\033[0;32m'
@@ -74,32 +75,26 @@ create_cluster() {
         warn "Cluster '${CLUSTER_NAME}' already exists — skipping creation."
         info "Starting cluster in case it was stopped..."
         k3d cluster start "${CLUSTER_NAME}"
-        return
+    else
+        info "Creating k3d cluster '${CLUSTER_NAME}'..."
+        info "(Traefik ingress is disabled to save memory — KFP is accessed via port-forward)"
+        k3d cluster create "${CLUSTER_NAME}" \
+            --agents 1 \
+            --k3s-arg "--disable=traefik@server:0" \
+            --wait
+        ok "Cluster '${CLUSTER_NAME}' created"
     fi
 
-    info "Creating k3d cluster '${CLUSTER_NAME}'..."
-    info "(Traefik ingress is disabled to save memory — KFP is accessed via port-forward)"
-    k3d cluster create "${CLUSTER_NAME}" \
-        --agents 1 \
-        --k3s-arg "--disable=traefik@server:0" \
-        --wait
-    ok "Cluster '${CLUSTER_NAME}' created"
+    info "Switching kubectl context to k3d-${CLUSTER_NAME}..."
+    kubectl config use-context "k3d-${CLUSTER_NAME}"
+    ok "kubectl context set to k3d-${CLUSTER_NAME}"
 }
 
 # ---------------------------------------------------------------------------
 # KFP deployment
 # ---------------------------------------------------------------------------
 
-deploy_kfp() {
-    # Idempotent: if the kubeflow namespace already has the ML pipeline CRD, skip
-    if kubectl get namespace kubeflow >/dev/null 2>&1 && \
-       kubectl get deploy -n kubeflow ml-pipeline >/dev/null 2>&1; then
-        warn "KFP already deployed in namespace 'kubeflow' — skipping."
-        return
-    fi
-
-    info "Deploying KFP v${KFP_VERSION} (platform-agnostic, no Argo/Docker executor)..."
-
+_apply_kfp_manifests() {
     info "  [1/3] Applying cluster-scoped resources..."
     kubectl apply -k \
         "github.com/kubeflow/pipelines/manifests/kustomize/cluster-scoped-resources?ref=${KFP_VERSION}"
@@ -119,8 +114,27 @@ deploy_kfp() {
         --for condition=Ready \
         --timeout=300s \
         -n kubeflow
+}
 
+deploy_kfp() {
+    if kubectl get namespace kubeflow >/dev/null 2>&1 && \
+       kubectl get deploy -n kubeflow ml-pipeline >/dev/null 2>&1; then
+        warn "KFP already deployed in namespace 'kubeflow' — skipping."
+        warn "To upgrade KFP to v${KFP_VERSION}, run: make kfp-dev-upgrade"
+        return
+    fi
+
+    info "Deploying KFP v${KFP_VERSION} (platform-agnostic, no Argo/Docker executor)..."
+    _apply_kfp_manifests
     ok "KFP v${KFP_VERSION} deployed"
+}
+
+upgrade_kfp() {
+    info "Upgrading KFP to v${KFP_VERSION} on cluster '${CLUSTER_NAME}'..."
+    info "Switching kubectl context to k3d-${CLUSTER_NAME}..."
+    kubectl config use-context "k3d-${CLUSTER_NAME}"
+    _apply_kfp_manifests
+    ok "KFP upgraded to v${KFP_VERSION}"
 }
 
 # ---------------------------------------------------------------------------
@@ -156,33 +170,49 @@ start_port_forward() {
 # ---------------------------------------------------------------------------
 
 main() {
-    echo ""
-    info "======================================================="
-    info " Kale KFP dev cluster setup"
-    info " Cluster: ${CLUSTER_NAME}  |  KFP: v${KFP_VERSION}"
-    info "======================================================="
-    echo ""
-
-    check_prereqs
-    ensure_k3d
-    create_cluster
-    deploy_kfp
-    start_port_forward
-
-    echo ""
-    ok "======================================================="
-    ok " KFP dev cluster is ready!"
-    ok "======================================================="
-    printf "${BLUE} UI:     ${NC}http://localhost:${LOCAL_PORT}\n"
-    printf "${BLUE} Compile:${NC} make kfp-compile NB=notebook.ipynb\n"
-    printf "${BLUE} Run:    ${NC} make kfp-run NB=notebook.ipynb KFP_HOST=http://localhost:${LOCAL_PORT}\n"
-    printf "${BLUE} Stop:   ${NC} make kfp-dev-stop\n"
-    printf "${BLUE} Resume: ${NC} make kfp-dev-start\n"
-    printf "${BLUE} Delete: ${NC} make kfp-dev-delete\n"
-    echo ""
-    warn "Memory tip: if Docker is slow, increase Docker Desktop memory in Settings → Resources."
-    warn "KFP requires ~2 GB. k3d overhead is ~512 MB on top of that."
-    echo ""
+    case "${COMMAND}" in
+        upgrade)
+            echo ""
+            info "======================================================="
+            info " Kale KFP upgrade"
+            info " Cluster: ${CLUSTER_NAME}  |  KFP: v${KFP_VERSION}"
+            info "======================================================="
+            echo ""
+            check_prereqs
+            upgrade_kfp
+            echo ""
+            ok "KFP upgraded to v${KFP_VERSION} on cluster '${CLUSTER_NAME}'."
+            echo ""
+            ;;
+        setup|*)
+            echo ""
+            info "======================================================="
+            info " Kale KFP dev cluster setup"
+            info " Cluster: ${CLUSTER_NAME}  |  KFP: v${KFP_VERSION}"
+            info "======================================================="
+            echo ""
+            check_prereqs
+            ensure_k3d
+            create_cluster
+            deploy_kfp
+            start_port_forward
+            echo ""
+            ok "======================================================="
+            ok " KFP dev cluster is ready!"
+            ok "======================================================="
+            printf "${BLUE} UI:     ${NC}http://localhost:${LOCAL_PORT}\n"
+            printf "${BLUE} Compile:${NC} make kfp-compile NB=notebook.ipynb\n"
+            printf "${BLUE} Run:    ${NC} make kfp-run NB=notebook.ipynb KFP_HOST=http://localhost:${LOCAL_PORT}\n"
+            printf "${BLUE} Stop:   ${NC} make kfp-dev-stop\n"
+            printf "${BLUE} Resume: ${NC} make kfp-dev-start\n"
+            printf "${BLUE} Upgrade:${NC} make kfp-dev-upgrade\n"
+            printf "${BLUE} Delete: ${NC} make kfp-dev-delete\n"
+            echo ""
+            warn "Memory tip: if Docker is slow, increase Docker Desktop memory in Settings → Resources."
+            warn "KFP requires ~2 GB. k3d overhead is ~512 MB on top of that."
+            echo ""
+            ;;
+    esac
 }
 
 main

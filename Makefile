@@ -3,7 +3,7 @@
         lint lint-backend lint-labextension format-labextension format-backend \
         build \
         kfp-build kfp-serve kfp-compile kfp-run \
-        kfp-dev-setup kfp-dev-start kfp-dev-stop kfp-dev-delete kfp-dev-status \
+        kfp-dev-setup kfp-dev-start kfp-dev-stop kfp-dev-delete kfp-dev-status kfp-dev-upgrade \
         clean clean-venv lock lock-upgrade check-uv \
         jupyter jupyter-kfp watch-labextension \
         docker-build docker-run \
@@ -157,13 +157,18 @@ KFP_LOCAL_PORT ?= 8080
 KFP_PID_FILE := $(CURDIR)/.kfp-dev-pf.pid
 
 kfp-dev-setup: ## Create k3d cluster + install KFP standalone (~5 min, first time only)
-	@bash scripts/kfp-dev-setup.sh "$(KFP_CLUSTER_NAME)" "$(KFP_PIPELINE_VERSION)" "$(KFP_LOCAL_PORT)" "$(KFP_PID_FILE)"
+	@bash scripts/kfp-dev-setup.sh setup "$(KFP_CLUSTER_NAME)" "$(KFP_PIPELINE_VERSION)" "$(KFP_LOCAL_PORT)" "$(KFP_PID_FILE)"
+
+kfp-dev-upgrade: ## Upgrade KFP on existing cluster (usage: make kfp-dev-upgrade KFP_PIPELINE_VERSION=2.17.0)
+	@bash scripts/kfp-dev-setup.sh upgrade "$(KFP_CLUSTER_NAME)" "$(KFP_PIPELINE_VERSION)" "$(KFP_LOCAL_PORT)" "$(KFP_PID_FILE)"
 
 kfp-dev-start: ## Start existing cluster and port-forward KFP UI to localhost:8080
 	@printf "$(BLUE)Starting k3d cluster '$(KFP_CLUSTER_NAME)'...\n$(NC)"
 	@k3d cluster start $(KFP_CLUSTER_NAME) 2>/dev/null || { \
 		printf "$(YELLOW)Cluster '$(KFP_CLUSTER_NAME)' not found. Run 'make kfp-dev-setup' first.\n$(NC)"; exit 1; \
 	}
+	@printf "$(BLUE)Switching kubectl context to k3d-$(KFP_CLUSTER_NAME)...\n$(NC)"
+	@kubectl config use-context k3d-$(KFP_CLUSTER_NAME)
 	@if [ -f $(KFP_PID_FILE) ]; then \
 		kill $$(cat $(KFP_PID_FILE)) 2>/dev/null || true; \
 		rm -f $(KFP_PID_FILE); \
