@@ -15,15 +15,17 @@
 import { Notebook, NotebookPanel } from '@jupyterlab/notebook';
 import CellUtils from './CellUtils';
 import { RESERVED_CELL_NAMES } from '../widgets/cell-metadata/CellMetadataEditor';
-import { ICellModel, CodeCellModel } from '@jupyterlab/cells';
 
 const IMAGE_TAG = 'image:';
+const CACHE_TAG = 'cache:';
+const CACHE_ENABLED_VALUE = 'enabled';
 
 interface IKaleCellTags {
   blockName: string;
   prevBlockNames: string[];
   limits?: { [id: string]: string };
   baseImage?: string;
+  enableCaching?: boolean;
 }
 
 /** Contains utility functions for manipulating/handling Kale cell tags. */
@@ -34,13 +36,14 @@ export default class TagsUtils {
    * @returns Array<str> - a list of the block names (i.e. the pipeline steps'
    *  names)
    */
-  public static getAllBlocks(notebook: Notebook): string[] {
+  public static getAllBlocks(notebook: Notebook, cellIndex: number = -1): string[] {
     if (!notebook.model) {
       return [];
     }
     const blocks = new Set<string>();
+    const toCell = cellIndex < 0 ? notebook.model.cells.length : cellIndex;
     // iterate through the notebook cells
-    for (const idx of Array(notebook.model.cells.length).keys()) {
+    for (const idx of Array(toCell).keys()) {
       // get the tags of the current cell
       const mt = this.getKaleCellTags(notebook, idx);
       if (mt && mt.blockName && mt.blockName !== '') {
@@ -118,11 +121,20 @@ export default class TagsUtils {
         baseImage = imageTag.substring(IMAGE_TAG.length);
       }
 
+      // Parse cache tag
+      let enableCaching: boolean | undefined;
+      const cacheTag = tags.find(v => v.startsWith(CACHE_TAG));
+      if (cacheTag) {
+        const cacheValue = cacheTag.substring(CACHE_TAG.length);
+        enableCaching = cacheValue === CACHE_ENABLED_VALUE ? true : false;
+      }
+
       return {
         blockName: b_name[0] || '',
         prevBlockNames: prevs,
         limits: limits,
         baseImage: baseImage,
+        enableCaching: enableCaching,
       };
     }
     return null;
@@ -138,8 +150,7 @@ export default class TagsUtils {
   public static setKaleCellTags(
     notebookPanel: NotebookPanel,
     index: number,
-    metadata: IKaleCellTags,
-    save: boolean,
+    metadata: IKaleCellTags
   ): Promise<any> {
     // make the dict to save to tags
     let nb = metadata.blockName;
@@ -161,7 +172,12 @@ export default class TagsUtils {
       tags.push(IMAGE_TAG + baseImage);
     }
 
-    return CellUtils.setCellMetaData(notebookPanel, index, 'tags', tags, save);
+    // Add cache tag if specified
+    if (metadata.enableCaching !== undefined) {
+      tags.push(CACHE_TAG + (metadata.enableCaching ? 'enabled' : 'disabled'));
+    }
+
+    return CellUtils.setCellMetaData(notebookPanel, index, 'tags', tags);
   }
 
   /**
@@ -200,12 +216,10 @@ export default class TagsUtils {
         })
         .filter(t => t !== '' && t !== 'prev:');
       allPromises.push(
-        CellUtils.setCellMetaData(notebookPanel, i, 'tags', newTags, false),
+        CellUtils.setCellMetaData(notebookPanel, i, 'tags', newTags),
       );
     }
-    Promise.all(allPromises).then(() => {
-      notebookPanel.context.save();
-    });
+    Promise.all(allPromises);
   }
 
   /**
@@ -231,8 +245,7 @@ export default class TagsUtils {
     TagsUtils.setKaleCellTags(
       notebook,
       activeCellIndex,
-      cellMetadata,
-      false,
+      cellMetadata
     ).then(oldValue => {
       TagsUtils.updateKaleCellsTags(notebook, oldBlockName, value);
     });
@@ -251,47 +264,35 @@ export default class TagsUtils {
   }
 
   public static removeOldDependencies(
-    notebook: NotebookPanel,
-    removedCell: ICellModel,
+    notebook: NotebookPanel
   ) {
-    if (!(removedCell instanceof CodeCellModel)) {
+    const cells = notebook.model?.cells;
+    if (!cells) {
       return;
     }
-    const metadata = removedCell.metadata as any;
-    let tagsValue;
-    if (metadata && typeof metadata.get === 'function') {
-      tagsValue = metadata.get('tags');
-    } else if (metadata && metadata.tags) {
-      tagsValue = metadata.tags;
-    } else {
-      return; // No tags found
+
+    const allBlocks = this.getAllBlocks(notebook.content);
+    const allBlocksSet = new Set(allBlocks);
+
+    for (let index = 0; index < cells.length; index++) {
+      const kaleTags = this.getKaleCellTags(notebook.content, index);
+      if (!kaleTags) {
+        continue;
+      }
+
+      const newPrevBlockNames = kaleTags.prevBlockNames.filter(
+        dep => allBlocksSet.has(dep)
+      );
+
+      if (newPrevBlockNames.length !== kaleTags.prevBlockNames.length) {
+        const updatedMetadata = {
+          ...kaleTags,
+          prevBlockNames: newPrevBlockNames,
+        };
+
+        this.setKaleCellTags(notebook, index, updatedMetadata);
+      }
     }
-    if (!Array.isArray(tagsValue)) {
-      return;
-    }
-    const tags = tagsValue.filter((tag): tag is string => typeof tag === 'string');
-    if (!tags) {
-      return;
-    }
-    const blockName = tags
-      .filter(t => t.startsWith('step:'))
-      .map(t => t.replace('step:', ''))[0];
-    if (!blockName) {
-      return;
-    }
-    const removedDependency = `prev:${blockName}`;
-    this.cellsToArray(notebook)
-      .filter(cell => {
-        const cellTags = cell?.metadata['tags'];
-        return Array.isArray(cellTags) && cellTags.includes(removedDependency);
-      })
-      .forEach(cell => {
-        const cellTags = cell?.metadata['tags'];
-        if (Array.isArray(cellTags)) {
-          const newTags = cellTags.filter(e => e !== removedDependency);
-          cell.metadata['tags'] =  newTags;
-        }
-      });
-    notebook.context.save();
+
   }
 }

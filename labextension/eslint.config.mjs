@@ -31,7 +31,7 @@ export default [
       '**/labextension/**',
       '.prettierrc.js',
       '.ipynb_checkpoints/**',
-
+      'webpack.config.js',
     ],
   },
   js.configs.recommended,
@@ -57,7 +57,11 @@ export default [
   // JS/TS common stylistic rules
   {
     rules: {
-      quotes: ['error', 'single', { avoidEscape: true, allowTemplateLiterals: false }],
+      quotes: [
+        'error',
+        'single',
+        { avoidEscape: true, allowTemplateLiterals: false },
+      ],
       curly: ['error', 'all'],
       eqeqeq: 'error',
       'prefer-arrow-callback': 'error',

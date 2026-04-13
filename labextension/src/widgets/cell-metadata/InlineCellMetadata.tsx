@@ -40,6 +40,7 @@ interface IProps {
   onMetadataEnable: (isEnabled: boolean) => void;
   pipelineBaseImage?: string;
   defaultBaseImage?: string;
+  initialChecked?: boolean;
 }
 
 type Editors = { [index: string]: EditorProps };
@@ -72,13 +73,29 @@ export class InlineCellsMetadata extends React.Component<IProps, IState> {
     this.onEditorVisibilityChange = this.onEditorVisibilityChange.bind(this);
   }
 
+  static getDerivedStateFromProps(
+    nextProps: IProps,
+    prevState: IState,
+  ): Partial<IState> | null {
+    if (
+      nextProps.initialChecked !== undefined &&
+      nextProps.initialChecked !== prevState.checked
+    ) {
+      return { checked: nextProps.initialChecked };
+    }
+    return null;
+  }
+
   componentDidMount = () => {
     if (this.props.notebook) {
       this.connectAndInitWhenReady(this.props.notebook);
     }
   };
 
-  componentDidUpdate = async (prevProps: Readonly<IProps>) => {
+  componentDidUpdate = async (
+    prevProps: Readonly<IProps>,
+    prevState: Readonly<IState>,
+  ) => {
     if (!this.props.notebook && prevProps.notebook) {
       // no notebook
       this.clearEditorsPropsAndInlineMetadata();
@@ -96,6 +113,10 @@ export class InlineCellsMetadata extends React.Component<IProps, IState> {
       }
       // hide editor on notebook change
       this.setState({ isEditorVisible: false });
+    }
+
+    if (!prevState.checked && this.state.checked && this.props.notebook) {
+      this.runEnableKaleLogic();
     }
   };
 
@@ -115,6 +136,13 @@ export class InlineCellsMetadata extends React.Component<IProps, IState> {
     if (notebook.model) {
       notebook.model.cells.changed.connect(this.handleCellChange);
     }
+
+    if (notebook.content.activeCell?.model.type === 'code') {
+      notebook.content.activeCell.model.metadataChanged.connect(
+        this.onActiveCellMetadataChange,
+      );
+      this.setState({ activeCellIndex: notebook.content.activeCellIndex });
+    }
   };
 
   disconnectHandlersFromNotebook = (notebook: NotebookPanel) => {
@@ -127,9 +155,18 @@ export class InlineCellsMetadata extends React.Component<IProps, IState> {
   };
 
   onActiveCellChanged = (notebook: Notebook, activeCell: Cell | null) => {
+    const prevCell = notebook.model?.cells.get(this.state.activeCellIndex);
+    if (prevCell) {
+      prevCell.metadataChanged.disconnect(this.onActiveCellMetadataChange);
+    }
     this.setState({
       activeCellIndex: notebook.activeCellIndex,
     });
+    activeCell?.model.metadataChanged.connect(this.onActiveCellMetadataChange);
+  };
+
+  onActiveCellMetadataChange = (_: any) => {
+    this.refreshEditorsPropsAndInlineMetadata(true);
   };
 
   handleSaveState = (context: DocumentRegistry.Context, state: SaveState) => {
@@ -142,43 +179,28 @@ export class InlineCellsMetadata extends React.Component<IProps, IState> {
     cells: CellList,
     args: IObservableList.IChangedArgs<ICellModel>,
   ) => {
-    this.refreshEditorsPropsAndInlineMetadata();
-
     const prevValue = args.oldValues[0];
     // Change type 'set' is when a cell changes its type. Even if a user changes
     // multiple cells using Shift + click the args.oldValues has only one cell
     // each time.
     if (args.type === 'set' && prevValue instanceof CodeCellModel) {
-      CellUtils.setCellMetaData(
-        this.props.notebook,
-        args.newIndex,
-        'tags',
-        [],
-        true,
-      );
+      CellUtils.setCellMetaData(this.props.notebook, args.newIndex, 'tags', []);
     }
 
     // Change type 'remove' is when a cell is removed from the notebook.
     if (args.type === 'remove') {
-      TagsUtils.removeOldDependencies(this.props.notebook, prevValue);
+      TagsUtils.removeOldDependencies(this.props.notebook);
     }
+
+    this.refreshEditorsPropsAndInlineMetadata();
   };
 
-  /**
-   * Event handler for the global Kale switch (the one below the Kale title in
-   * the left panel). Enabling the switch propagates to the father component
-   * (LeftPanel) to enable the rest of the UI.
-   */
-  toggleGlobalKaleSwitch(checked: boolean) {
-    this.setState({ checked });
-    this.props.onMetadataEnable(checked);
-
-    if (checked) {
+  private runEnableKaleLogic = () => {
+    if (!this.props.notebook || !this.props.notebook.model) {
+      return;
+    }
+    this.props.notebook.context.ready.then(() => {
       this.generateEditorsPropsAndInlineMetadata();
-
-      // When drawing cell metadata on Kale enable/disable, the targeted
-      // cell may be lost. Therefore, we select and scroll to the active
-      // cell.
       if (
         this.props.notebook &&
         this.props.notebook.content &&
@@ -198,18 +220,32 @@ export class InlineCellsMetadata extends React.Component<IProps, IState> {
           );
         }
       }
+    });
+  };
+
+  /**
+   * Event handler for the global Kale switch (the one below the Kale title in
+   * the left panel). Enabling the switch propagates to the father component
+   * (LeftPanel) to enable the rest of the UI.
+   */
+  toggleGlobalKaleSwitch(checked: boolean) {
+    this.setState({ checked });
+    this.props.onMetadataEnable(checked);
+
+    if (checked) {
+      this.runEnableKaleLogic();
     } else {
       this.setState({ isEditorVisible: false });
       this.clearEditorsPropsAndInlineMetadata();
     }
   }
 
-  refreshEditorsPropsAndInlineMetadata() {
+  refreshEditorsPropsAndInlineMetadata(isEditorVisible: boolean = false) {
     if (this.state.checked) {
       this.clearEditorsPropsAndInlineMetadata(() => {
         this.generateEditorsPropsAndInlineMetadata();
       });
-      this.setState({ isEditorVisible: false });
+      this.setState({ isEditorVisible: isEditorVisible });
     }
   }
 
@@ -257,6 +293,7 @@ export class InlineCellsMetadata extends React.Component<IProps, IState> {
         stepDependencies: tags.prevBlockNames || [],
         limits: tags.limits || {},
         baseImage: tags.baseImage,
+        enableCaching: tags.enableCaching,
       };
 
       const cellElement = this.props.notebook.content.widgets[index]
@@ -270,8 +307,16 @@ export class InlineCellsMetadata extends React.Component<IProps, IState> {
       }
 
       const metadataParent = document.createElement('div');
-      cellElement.prepend(metadataParent);
-
+      // When the cell was newly added Jupyter still didn't add elements to it
+      // so we wait for the first child to be added and then we prepend the metadata element.
+      if (cellElement.childNodes.length === 0) {
+        new MutationObserver((_, obs) => {
+          cellElement.prepend(metadataParent);
+          obs.disconnect();
+        }).observe(cellElement, { childList: true });
+      } else {
+        cellElement.prepend(metadataParent);
+      }
       const inlineMetadataPortal = createPortal(
         <InlineMetadata
           key={index}
@@ -280,6 +325,7 @@ export class InlineCellsMetadata extends React.Component<IProps, IState> {
           stepDependencies={tags.prevBlockNames}
           limits={tags.limits || {}}
           baseImage={tags.baseImage}
+          enableCaching={tags.enableCaching}
           previousBlockName={previousBlockName}
           cellIndex={index}
           pipelineBaseImage={this.props.pipelineBaseImage}
@@ -335,6 +381,7 @@ export class InlineCellsMetadata extends React.Component<IProps, IState> {
         stepDependencies={editorProps.stepDependencies}
         limits={editorProps.limits}
         baseImage={editorProps.baseImage}
+        enableCaching={editorProps.enableCaching}
         pipelineBaseImage={this.props.pipelineBaseImage}
         defaultBaseImage={this.props.defaultBaseImage}
       />,

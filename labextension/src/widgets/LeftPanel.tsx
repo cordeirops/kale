@@ -26,10 +26,19 @@ import {
 import { JupyterFrontEnd } from '@jupyterlab/application';
 import { IDocumentManager } from '@jupyterlab/docmanager';
 import { ThemeProvider } from '@mui/material/styles';
+import { FormControlLabel, Switch } from '@mui/material';
 import { theme } from '../Theme';
 import { Input } from '../components/Input';
 import Commands from '../lib/Commands';
 import { PageConfig } from '@jupyterlab/coreutils';
+import { KaleEmptyState } from './KaleEmptyState';
+import { KFPStatusBadge, KfpStatus } from '../components/KFPStatusBadge';
+import { executeRpc } from '../lib/RPCUtils';
+import kaleLogo from '../../style/icons/kale.svg';
+
+export type DeployType = 'compile' | 'run' | 'upload';
+
+const KFP_STATUS_REFRESH_MS = 30_000;
 
 const KALE_NOTEBOOK_METADATA_KEY = 'kubeflow_notebook';
 const DEFAULT_UI_URL = 'http://localhost:8080';
@@ -50,12 +59,14 @@ interface IProps {
   docManager: IDocumentManager;
   backend: boolean;
   kernel: Kernel.IKernelConnection;
+  enableKaleByDefault: boolean;
+  autoSaveOnCompileOrRun: boolean;
 }
 
 interface IState {
   metadata: IKaleNotebookMetadata;
   runDeployment: boolean;
-  deploymentType: string;
+  deploymentType: DeployType;
   deployDebugMessage: boolean;
   experiments: IExperiment[];
   gettingExperiments: boolean;
@@ -64,6 +75,7 @@ interface IState {
   namespace: string;
   kfpUiHost: string;
   defaultBaseImage: string;
+  kfpStatus: KfpStatus;
 }
 
 // keep names with Python notation because they will be read
@@ -74,6 +86,7 @@ export interface IKaleNotebookMetadata {
   pipeline_name: string;
   pipeline_description: string;
   base_image: string;
+  enable_caching?: boolean;
 
   steps_defaults?: string[];
   storage_class_name?: string;
@@ -86,6 +99,7 @@ export const DefaultState: IState = {
     pipeline_name: '',
     pipeline_description: '',
     base_image: '',
+    enable_caching: true, // Default value in KFP is true
     steps_defaults: [],
   },
   runDeployment: false,
@@ -98,6 +112,7 @@ export const DefaultState: IState = {
   namespace: '',
   kfpUiHost: '',
   defaultBaseImage: '',
+  kfpStatus: 'checking',
 };
 
 let deployIndex = 0;
@@ -105,6 +120,8 @@ let deployIndex = 0;
 export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
   // init state default values
   state = DefaultState;
+
+  private _kfpPollTimerId: ReturnType<typeof setInterval> | null = null;
 
   // Return the notebook file name without extension (e.g. 'MyNotebook' from 'path/to/MyNotebook.ipynb')
   getNotebookFileName = (notebook: NotebookPanel | null): string => {
@@ -182,13 +199,28 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
         base_image: name,
       },
     }));
+  updateEnableCaching = (enabled: boolean) =>
+    this.setState(prevState => ({
+      metadata: { ...prevState.metadata, enable_caching: enabled },
+    }));
 
-  activateRunDeployState = (type: string) => {
+  activateRunDeployState = (type: DeployType) => {
     if (!this.state.runDeployment) {
       // Clear all previous deploys when starting a new one, so only the latest panel is shown
       this.setState({ runDeployment: true, deploymentType: type, deploys: {} });
       this.runDeploymentCommand();
     }
+  };
+
+  public triggerCompile = () => {
+    this.activateRunDeployState('compile');
+  };
+
+  public isKaleEnabled = (): boolean => {
+    return this.state.isEnabled;
+  };
+  public triggerRun = () => {
+    this.activateRunDeployState('run');
   };
 
   changeDeployDebugMessage = () =>
@@ -201,7 +233,21 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
     this.setState(prevState => ({
       ...DefaultState,
       isEnabled: prevState.isEnabled,
+      kfpStatus: prevState.kfpStatus,
     }));
+
+  refreshKfpStatus = async () => {
+    const kernelStatus = this.props.kernel?.status;
+    if (
+      !this.props.backend ||
+      kernelStatus === 'dead' ||
+      kernelStatus === 'terminating'
+    ) {
+      return;
+    }
+    const isConnected = await executeRpc(this.props.kernel, 'kfp.ping');
+    this.setState({ kfpStatus: isConnected ? 'connected' : 'disconnected' });
+  };
 
   componentDidMount = () => {
     // Notebook tracker will signal when a notebook is changed
@@ -210,12 +256,34 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
     if (this.props.tracker.currentWidget instanceof NotebookPanel) {
       this.setNotebookPanel(this.props.tracker.currentWidget);
     }
+    this.refreshKfpStatus();
+    this._kfpPollTimerId = setInterval(
+      this.refreshKfpStatus,
+      KFP_STATUS_REFRESH_MS,
+    );
+  };
+
+  componentWillUnmount = () => {
+    if (this._kfpPollTimerId !== null) {
+      clearInterval(this._kfpPollTimerId);
+    }
   };
 
   componentDidUpdate = (
     prevProps: Readonly<IProps>,
     prevState: Readonly<IState>,
   ) => {
+    // If the user has the setting enabled, we should allow Kale to turn on
+    // for the currently opened notebook without requiring a notebook switch.
+    // When the setting is turned off we keep the current toggle state.
+    if (
+      !prevProps.enableKaleByDefault &&
+      this.props.enableKaleByDefault &&
+      !this.state.isEnabled
+    ) {
+      this.setState({ isEnabled: true });
+    }
+
     // fast comparison of Metadata objects.
     // warning: this method does not work if keys change order.
     if (
@@ -230,7 +298,6 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
           activeNotebook,
           KALE_NOTEBOOK_METADATA_KEY,
           this.state.metadata,
-          true,
         );
       }
     }
@@ -247,9 +314,13 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
     // Set the current notebook and wait for the session to be ready
     if (notebook) {
       await this.setNotebookPanel(notebook);
+      const enableByDefault = this.props.enableKaleByDefault;
+      this.setState(prevState => ({
+        isEnabled: enableByDefault || prevState.isEnabled, // preserve toggle when setting off
+      }));
     } else {
-      // Handle null case - reset to default state
-      this.resetState();
+      // Handle null case - reset to default state and disable
+      this.setState(DefaultState);
     }
   };
 
@@ -423,6 +494,10 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
   };
 
   onPanelRemove = (index: number) => {
+    const deploy = this.state.deploys[index];
+    if (deploy === undefined || deploy === null) {
+      return;
+    }
     const deploys = { ...this.state.deploys };
     deploys[index].deleted = true;
     this.setState({ deploys });
@@ -430,12 +505,25 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
 
   runDeploymentCommand = async () => {
     const activeNotebook = this.getActiveNotebook();
+
     if (!activeNotebook) {
       this.setState({ runDeployment: false });
       return;
     }
 
-    await activeNotebook.context.save();
+    if (activeNotebook.model?.dirty && !this.props.autoSaveOnCompileOrRun) {
+      const result = await NotebookUtils.showYesNoDialog('Unsaved Changes', [
+        'Your current Notebook contains unsaved changes. Saving is required to proceed.',
+        'Would you like to save now?',
+      ]);
+      if (!result) {
+        this.setState({ runDeployment: false });
+        return;
+      }
+    }
+    if (activeNotebook.model?.dirty) {
+      await activeNotebook.context.save();
+    }
 
     const commands = new Commands(activeNotebook, this.props.kernel);
     const _deployIndex = ++deployIndex;
@@ -480,14 +568,14 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
     });
 
     // CREATE PIPELINE
-    const compileNotebook = await commands.compilePipeline(
+    const compileResult = await commands.compilePipeline(
       nbFilePath,
       metadata,
       this.props.docManager,
       this.state.deployDebugMessage,
       _updateDeployProgress,
     );
-    if (!compileNotebook) {
+    if (!compileResult.success) {
       this.setState({ runDeployment: false });
       return;
     }
@@ -500,8 +588,8 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
       this.state.deploymentType === 'upload' ||
       this.state.deploymentType === 'run'
         ? await commands.uploadPipeline(
-            compileNotebook.pipeline_package_path,
-            compileNotebook.pipeline_metadata,
+            compileResult.pipeline_package_path,
+            compileResult.pipeline_metadata,
             _updateDeployProgress,
           )
         : null;
@@ -526,8 +614,8 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
       const runPipeline = await commands.runPipeline(
         uploadPipeline.pipeline.pipelineid,
         uploadPipeline.pipeline.versionid,
-        compileNotebook.pipeline_metadata,
-        compileNotebook.pipeline_package_path,
+        compileResult.pipeline_metadata,
+        compileResult.pipeline_package_path,
         _updateDeployProgress,
       );
       if (runPipeline) {
@@ -566,6 +654,14 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
         experimentInputValue = selectedExperiments[0].name;
       }
     }
+    const pipelineNameValid = /^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/.test(
+      this.state.metadata.pipeline_name,
+    );
+    const experimentNameRegex = /^[a-z]([-a-z0-9]*[a-z0-9])?$/;
+    const experimentNameValid =
+      experimentInputSelected !== NEW_EXPERIMENT.id ||
+      experimentNameRegex.test(experimentInputValue);
+
     const experiment_name_input = (
       <ExperimentInput
         updateValue={this.updateExperiment}
@@ -600,6 +696,21 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
       />
     );
 
+    const enable_caching_toggle = (
+      <FormControlLabel
+        control={
+          <Switch
+            checked={this.state.metadata.enable_caching ?? true}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              this.updateEnableCaching(e.target.checked)
+            }
+            color="primary"
+          />
+        }
+        label="Enable Pipeline Caching"
+      />
+    );
+
     const activeNotebook = this.getActiveNotebook();
     return (
       <ThemeProvider theme={theme}>
@@ -607,30 +718,60 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
           <div className={'kubeflow-widget-content'}>
             <div>
               <p
-                style={{
-                  fontSize: 'var(--jp-ui-font-size3)',
-                  color: theme.kale.headers.main,
-                }}
-                className="kale-header"
+                className="kale-header kale-main-header"
+                style={{ color: theme.kale.headers.main }}
               >
-                Kale Deployment Panel {this.state.isEnabled}
+                Kale
+                <img
+                  // encode the SVG string into a data URI
+                  src={`data:image/svg+xml,${encodeURIComponent(kaleLogo)}`}
+                  className="kale-logo-img"
+                  alt="Kale Logo"
+                />
               </p>
+              {this.props.backend && (
+                <div className="kfp-status-container">
+                  <KFPStatusBadge status={this.state.kfpStatus} />
+                </div>
+              )}
             </div>
 
             <div className="kale-component">
-              {activeNotebook && (
+              {activeNotebook ? (
                 <InlineCellsMetadata
                   onMetadataEnable={this.onMetadataEnable}
                   notebook={activeNotebook}
                   pipelineBaseImage={this.state.metadata.base_image}
                   defaultBaseImage={this.state.defaultBaseImage}
+                  initialChecked={this.state.isEnabled}
                 />
+              ) : (
+                <>
+                  <div className="toolbar input-container kale-disabled-toggle">
+                    <div className={'switch-label'}>Enable</div>
+                    <Switch
+                      disabled
+                      checked={false}
+                      color="primary"
+                      name="enableKale"
+                      slotProps={{ input: { 'aria-label': 'Enable Kale' } }}
+                      classes={{ root: 'material-switch' }}
+                    />
+                  </div>
+                  <div className="kale-no-notebook-message">
+                    <p className="kale-no-notebook-text">
+                      Open a notebook to start working with Kale
+                    </p>
+                  </div>
+                </>
               )}
+              {!this.state.isEnabled && <KaleEmptyState />}
             </div>
 
             <div
               className={
-                'kale-component ' + (this.state.isEnabled ? '' : 'hidden')
+                'kale-component ' +
+                (this.state.isEnabled && activeNotebook ? '' : 'hidden')
               }
             >
               <div>
@@ -646,17 +787,21 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
                 {experiment_name_input}
                 {pipeline_name_input}
                 {pipeline_desc_input}
+                {enable_caching_toggle}
               </div>
             </div>
 
             <div
               className={
-                'kale-component ' + (this.state.isEnabled ? '' : 'hidden')
+                'kale-component ' +
+                (this.state.isEnabled && activeNotebook ? '' : 'hidden')
               }
-            ></div>
+            >
+              {' '}
+            </div>
           </div>
           <div
-            className={this.state.isEnabled ? '' : 'hidden'}
+            className={this.state.isEnabled && activeNotebook ? '' : 'hidden'}
             style={{ marginTop: 'auto' }}
           >
             <DeploysProgress
@@ -667,6 +812,7 @@ export class KubeflowKaleLeftPanel extends React.Component<IProps, IState> {
             <SplitDeployButton
               running={this.state.runDeployment}
               handleClick={this.activateRunDeployState}
+              disabled={!pipelineNameValid || !experimentNameValid}
             />
           </div>
         </div>

@@ -2711,6 +2711,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jupyterlab/nbformat@npm:^4.5.6":
+  version: 4.5.6
+  resolution: "@jupyterlab/nbformat@npm:4.5.6"
+  dependencies:
+    "@lumino/coreutils": ^2.2.2
+  checksum: 136f00cf215a7a4a9061d8874ac35191f5f65c62cdb7687578d77772d8d6fb866905710511986ef533a383826d1cc2807cfc58e5f7076b853703cae15b3c8bc8
+  languageName: node
+  linkType: hard
+
 "@jupyterlab/notebook@npm:^4.4.9, @jupyterlab/notebook@npm:^4.5.1":
   version: 4.5.1
   resolution: "@jupyterlab/notebook@npm:4.5.1"
@@ -2834,6 +2843,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jupyterlab/settingregistry@npm:^4.4.9":
+  version: 4.5.6
+  resolution: "@jupyterlab/settingregistry@npm:4.5.6"
+  dependencies:
+    "@jupyterlab/nbformat": ^4.5.6
+    "@jupyterlab/statedb": ^4.5.6
+    "@lumino/commands": ^2.3.3
+    "@lumino/coreutils": ^2.2.2
+    "@lumino/disposable": ^2.1.5
+    "@lumino/signaling": ^2.1.5
+    "@rjsf/utils": ^5.13.4
+    ajv: ^8.12.0
+    json5: ^2.2.3
+  peerDependencies:
+    react: ">=16"
+  checksum: fd8490e0a2e7a8359fc6c87e1988bda6ce168be202fba3888b77a9bbd4b0967a2486d39c73464f2295a17615cc715ab48733e6fa4d52b4565bb003e3d586c99b
+  languageName: node
+  linkType: hard
+
 "@jupyterlab/settingregistry@npm:^4.5.1":
   version: 4.5.1
   resolution: "@jupyterlab/settingregistry@npm:4.5.1"
@@ -2863,6 +2891,19 @@ __metadata:
     "@lumino/properties": ^2.0.4
     "@lumino/signaling": ^2.1.5
   checksum: 0b42b997b63a767abc33585815ad7e3d673c2303e3de441bcc97780ab83ce495efccd34fdfb3084aafdfd2ff883e800206b353b10c08fdf3d2a3c1befd163115
+  languageName: node
+  linkType: hard
+
+"@jupyterlab/statedb@npm:^4.5.6":
+  version: 4.5.6
+  resolution: "@jupyterlab/statedb@npm:4.5.6"
+  dependencies:
+    "@lumino/commands": ^2.3.3
+    "@lumino/coreutils": ^2.2.2
+    "@lumino/disposable": ^2.1.5
+    "@lumino/properties": ^2.0.4
+    "@lumino/signaling": ^2.1.5
+  checksum: 5a9a237ed1cd215ddb672bc080da5966320716b7ea6a018eeca2c5cc3689b0b9709843e1ef2452657976b751ce00cf64c82375f3dc796d844f94dcf856c50884
   languageName: node
   linkType: hard
 
@@ -4841,14 +4882,14 @@ __metadata:
   linkType: hard
 
 "ajv@npm:^6.12.4, ajv@npm:^6.12.5":
-  version: 6.12.6
-  resolution: "ajv@npm:6.12.6"
+  version: 6.14.0
+  resolution: "ajv@npm:6.14.0"
   dependencies:
     fast-deep-equal: ^3.1.1
     fast-json-stable-stringify: ^2.0.0
     json-schema-traverse: ^0.4.1
     uri-js: ^4.2.2
-  checksum: 874972efe5c4202ab0a68379481fbd3d1b5d0a7bd6d3cc21d40d3536ebff3352a2a1fabb632d4fd2cc7fe4cbdcd5ed6782084c9bbf7f32a1536d18f9da5007d4
+  checksum: 7bb3ea97bb8af52521589079f427e799b6561acaa94f50e13410cb87588c51df8db1afe1157b3e48f1a829269adaa11116e0c2cafe2b998add1523789809a3c5
   languageName: node
   linkType: hard
 
@@ -8406,6 +8447,53 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jupyterlab-kubeflow-kale@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "jupyterlab-kubeflow-kale@workspace:."
+  dependencies:
+    "@emotion/react": ^11.14.0
+    "@emotion/styled": ^11.14.1
+    "@jupyterlab/application": ^4.4.9
+    "@jupyterlab/builder": ^4.4.6
+    "@jupyterlab/cells": ^4.4.9
+    "@jupyterlab/coreutils": ^6.4.5
+    "@jupyterlab/nbformat": ^4.4.9
+    "@jupyterlab/notebook": ^4.4.9
+    "@jupyterlab/settingregistry": ^4.4.9
+    "@jupyterlab/testutils": ^4.4.0
+    "@mui/icons-material": ^7.3.1
+    "@mui/material": ^7.3.1
+    "@types/jest": ^29.2.0
+    "@types/js-yaml": ^4.0.9
+    "@types/json-schema": ^7.0.11
+    "@types/react": ^18.2.0
+    "@types/react-addons-linked-state-mixin": ^0.14.22
+    "@types/react-dom": ^18.2.0
+    "@typescript-eslint/eslint-plugin": ^8.44.1
+    "@typescript-eslint/parser": ^6.1.0
+    css-loader: ^6.7.1
+    eslint: ^9.36.0
+    eslint-config-prettier: ^8.8.0
+    eslint-plugin-prettier: ^5.0.0
+    jest: ^29.2.0
+    mkdirp: ^1.0.3
+    npm-run-all2: ^7.0.1
+    prettier: ^3.0.0
+    react-sanitized-html: ^2.0.0
+    rimraf: ^5.0.1
+    source-map-loader: ^1.0.2
+    style-loader: ^4.0.0
+    stylelint: ^15.11.0
+    stylelint-config-recommended: ^13.0.0
+    stylelint-config-standard: ^34.0.0
+    stylelint-csstree-validator: ^3.0.0
+    stylelint-prettier: ^4.0.0
+    typescript: ~5.9.2
+    typescript-eslint: 8.44.1
+    yjs: ^13.5.40
+  languageName: unknown
+  linkType: soft
+
 "katex@npm:^0.16.22":
   version: 0.16.27
   resolution: "katex@npm:0.16.27"
@@ -8453,53 +8541,6 @@ __metadata:
   checksum: daa6562e907f856cbfd58a00c42f532c9bba283388984da6a3bffb494e56612e5f23c52f30b0d9885f0ea07ad5d88bfa0470ee65017a6ce6c565289a1afd78af
   languageName: node
   linkType: hard
-
-"kubeflow-kale-labextension@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "kubeflow-kale-labextension@workspace:."
-  dependencies:
-    "@emotion/react": ^11.14.0
-    "@emotion/styled": ^11.14.1
-    "@jupyterlab/application": ^4.4.9
-    "@jupyterlab/builder": ^4.4.6
-    "@jupyterlab/cells": ^4.4.9
-    "@jupyterlab/coreutils": ^6.4.5
-    "@jupyterlab/nbformat": ^4.4.9
-    "@jupyterlab/notebook": ^4.4.9
-    "@jupyterlab/testutils": ^4.4.0
-    "@mui/icons-material": ^7.3.1
-    "@mui/material": ^7.3.1
-    "@types/jest": ^29.2.0
-    "@types/js-yaml": ^4.0.9
-    "@types/json-schema": ^7.0.11
-    "@types/react": ^18.2.0
-    "@types/react-addons-linked-state-mixin": ^0.14.22
-    "@types/react-dom": ^18.2.0
-    "@typescript-eslint/eslint-plugin": ^8.44.1
-    "@typescript-eslint/parser": ^6.1.0
-    css-loader: ^6.7.1
-    eslint: ^9.36.0
-    eslint-config-prettier: ^8.8.0
-    eslint-plugin-prettier: ^5.0.0
-    jest: ^29.2.0
-    mkdirp: ^1.0.3
-    npm-run-all2: ^7.0.1
-    prettier: ^3.0.0
-    react-sanitized-html: ^2.0.0
-    rimraf: ^5.0.1
-    source-map-loader: ^1.0.2
-    style-loader: ^4.0.0
-    stylelint: ^15.11.0
-    stylelint-config-recommended: ^13.0.0
-    stylelint-config-standard: ^34.0.0
-    stylelint-csstree-validator: ^3.0.0
-    stylelint-prettier: ^4.0.0
-    typescript: ~5.9.2
-    typescript-eslint: 8.44.1
-    use-debounce: ^10.0.5
-    yjs: ^13.5.40
-  languageName: unknown
-  linkType: soft
 
 "langium@npm:3.3.1":
   version: 3.3.1
@@ -10771,15 +10812,15 @@ __metadata:
   linkType: hard
 
 "tar@npm:^7.5.2":
-  version: 7.5.7
-  resolution: "tar@npm:7.5.7"
+  version: 7.5.9
+  resolution: "tar@npm:7.5.9"
   dependencies:
     "@isaacs/fs-minipass": ^4.0.0
     chownr: ^3.0.0
     minipass: ^7.1.2
     minizlib: ^3.1.0
     yallist: ^5.0.0
-  checksum: 82fa04804b6cae4c0b46b84e97a08c39e1c17bb959350baa32d139bcf5e1fc7ebc3ceb72465dd3e2e311992386ecc13599a257d5672158490ceb9464146d5573
+  checksum: 26fbbdf536895814167d03e4883f80febb6520729169c54d0f29ee8a163557283862752493f0e5b60800a6f3608aac3250c41fac8e20a4f056ba4fa63f3dbad7
   languageName: node
   linkType: hard
 
@@ -11170,15 +11211,6 @@ __metadata:
     querystringify: ^2.1.1
     requires-port: ^1.0.0
   checksum: fbdba6b1d83336aca2216bbdc38ba658d9cfb8fc7f665eb8b17852de638ff7d1a162c198a8e4ed66001ddbf6c9888d41e4798912c62b4fd777a31657989f7bdf
-  languageName: node
-  linkType: hard
-
-"use-debounce@npm:^10.0.5":
-  version: 10.1.0
-  resolution: "use-debounce@npm:10.1.0"
-  peerDependencies:
-    react: "*"
-  checksum: 217a80a392cbd6bafb43cd52bc5579847d35c5df890f2b3689c527317bc610e8467f4c051e39180f825b6e8ee9e6fc777c09a214a9df4fff3dc72a1a9ee73853
   languageName: node
   linkType: hard
 

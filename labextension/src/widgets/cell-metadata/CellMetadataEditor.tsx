@@ -25,7 +25,12 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControl,
+  FormControlLabel,
   IconButton,
+  Radio,
+  RadioGroup,
+  Tooltip,
 } from '@mui/material';
 import { CellMetadataEditorDialog } from './CellMetadataEditorDialog';
 import { Input } from '../../components/Input';
@@ -83,6 +88,7 @@ export interface IProps {
   limits?: { [id: string]: string };
   // Base image for this step
   baseImage?: string;
+  enableCaching?: boolean;
   pipelineBaseImage?: string;
   defaultBaseImage?: string;
 }
@@ -102,6 +108,8 @@ interface IState {
   // XXX (stefano): updatePreviousStepName don't allow me.
   cellMetadataEditorDialog: boolean;
   baseImageDialogOpen: boolean;
+  cacheDialogOpen: boolean;
+  cachingValue: 'default' | 'enabled' | 'disabled';
 }
 
 const DefaultState: IState = {
@@ -110,6 +118,8 @@ const DefaultState: IState = {
   blockDependenciesChoices: [],
   cellMetadataEditorDialog: false,
   baseImageDialogOpen: false,
+  cacheDialogOpen: false,
+  cachingValue: 'default',
 };
 
 /**
@@ -221,7 +231,11 @@ export class CellMetadataEditor extends React.Component<IProps, IState> {
       const cellModel = this.props.notebook.model.cells.get(
         this.context.activeCellIndex,
       );
-      if (!isCodeCellModel(cellModel) && this.context.isEditorVisible) {
+      if (
+        cellModel &&
+        !isCodeCellModel(cellModel) &&
+        this.context.isEditorVisible
+      ) {
         this.closeEditor();
       }
     }
@@ -240,7 +254,10 @@ export class CellMetadataEditor extends React.Component<IProps, IState> {
     if (!props.notebook) {
       return null;
     }
-    const allBlocks = TagsUtils.getAllBlocks(props.notebook.content);
+    const allBlocks = TagsUtils.getAllBlocks(
+      props.notebook.content,
+      this.context.activeCellIndex,
+    );
     const dependencyChoices: BlockDependencyChoice[] = allBlocks
       // remove all reserved names and current step name
       .filter(
@@ -277,10 +294,15 @@ export class CellMetadataEditor extends React.Component<IProps, IState> {
 
   updateCurrentBlockName = (value: string) => {
     const oldBlockName: string = this.props.stepName || '';
+    const tags = TagsUtils.getKaleCellTags(
+      this.props.notebook.content,
+      this.context.activeCellIndex,
+    );
     const currentCellMetadata = {
       prevBlockNames: this.props.stepDependencies,
       limits: this.props.limits || {},
       baseImage: this.props.baseImage,
+      enableCaching: tags?.enableCaching,
       blockName: value,
     };
 
@@ -288,7 +310,6 @@ export class CellMetadataEditor extends React.Component<IProps, IState> {
       this.props.notebook,
       this.context.activeCellIndex,
       currentCellMetadata,
-      false,
     ).then(() => {
       TagsUtils.updateKaleCellsTags(this.props.notebook, oldBlockName, value);
     });
@@ -298,10 +319,15 @@ export class CellMetadataEditor extends React.Component<IProps, IState> {
    * Even handler of the MultiSelect used to select the dependencies of a block
    */
   updatePrevBlocksNames = (previousBlocks: string[]) => {
+    const tags = TagsUtils.getKaleCellTags(
+      this.props.notebook.content,
+      this.context.activeCellIndex,
+    );
     const currentCellMetadata = {
       blockName: this.props.stepName || '',
       limits: this.props.limits || {},
       baseImage: this.props.baseImage,
+      enableCaching: tags?.enableCaching,
       prevBlockNames: previousBlocks,
     };
 
@@ -309,7 +335,6 @@ export class CellMetadataEditor extends React.Component<IProps, IState> {
       this.props.notebook,
       this.context.activeCellIndex,
       currentCellMetadata,
-      true,
     );
   };
 
@@ -336,18 +361,22 @@ export class CellMetadataEditor extends React.Component<IProps, IState> {
       }
     });
 
+    const tags = TagsUtils.getKaleCellTags(
+      this.props.notebook.content,
+      this.context.activeCellIndex,
+    );
     const currentCellMetadata = {
       blockName: this.props.stepName || '',
       prevBlockNames: this.props.stepDependencies,
       limits: limits,
       baseImage: this.props.baseImage,
+      enableCaching: tags?.enableCaching,
     };
 
     TagsUtils.setKaleCellTags(
       this.props.notebook,
       this.context.activeCellIndex,
       currentCellMetadata,
-      true,
     );
   };
 
@@ -393,19 +422,65 @@ export class CellMetadataEditor extends React.Component<IProps, IState> {
     });
   }
 
+  toggleCacheDialog() {
+    const isOpening = !this.state.cacheDialogOpen;
+    // When opening the dialog, read current value directly from notebook tags
+    if (isOpening) {
+      const tags = TagsUtils.getKaleCellTags(
+        this.props.notebook.content,
+        this.context.activeCellIndex,
+      );
+      const currentEnableCaching = tags?.enableCaching;
+      const cachingValue =
+        currentEnableCaching === undefined
+          ? 'default'
+          : currentEnableCaching
+            ? 'enabled'
+            : 'disabled';
+      this.setState({
+        cacheDialogOpen: true,
+        cachingValue: cachingValue,
+      });
+    } else {
+      this.setState({
+        cacheDialogOpen: false,
+      });
+    }
+  }
+
   updateBaseImage = (value: string) => {
+    const tags = TagsUtils.getKaleCellTags(
+      this.props.notebook.content,
+      this.context.activeCellIndex,
+    );
     const currentCellMetadata = {
       blockName: this.props.stepName || '',
       prevBlockNames: this.props.stepDependencies,
       limits: this.props.limits || {},
       baseImage: value || undefined,
+      enableCaching: tags?.enableCaching,
     };
 
     TagsUtils.setKaleCellTags(
       this.props.notebook,
       this.context.activeCellIndex,
       currentCellMetadata,
-      true,
+    );
+  };
+
+  updateEnableCaching = (value: boolean | undefined) => {
+    const currentCellMetadata = {
+      blockName: this.props.stepName || '',
+      prevBlockNames: this.props.stepDependencies,
+      limits: this.props.limits || {},
+      baseImage: this.props.baseImage,
+      enableCaching: value,
+    };
+
+    TagsUtils.setKaleCellTags(
+      this.props.notebook,
+      this.context.activeCellIndex,
+      currentCellMetadata,
     );
   };
 
@@ -462,18 +537,38 @@ export class CellMetadataEditor extends React.Component<IProps, IState> {
                 ''
               )}
               {cellType === 'step' ? (
-                <SelectMulti
-                  id="select-previous-blocks"
-                  label="Depends on"
-                  disabled={
-                    !(this.props.stepName && this.props.stepName.length > 0)
+                <Tooltip
+                  title={
+                    !this.props.stepName || this.props.stepName.length === 0
+                      ? 'Please enter a step name first'
+                      : this.state.blockDependenciesChoices.length === 0
+                        ? 'No other steps available. Add more pipeline steps to create dependencies.'
+                        : 'Select which steps this step depends on'
                   }
-                  updateSelected={this.updatePrevBlocksNames}
-                  options={this.state.blockDependenciesChoices}
-                  variant="outlined"
-                  selected={this.props.stepDependencies || []}
-                  style={{ width: '30%' }}
-                />
+                  placement="top"
+                  arrow
+                >
+                  <div
+                    style={{
+                      width: '30%',
+                      marginRight: '4px',
+                    }}
+                  >
+                    <SelectMulti
+                      id="select-previous-blocks"
+                      label="Depends on"
+                      disabled={
+                        !(
+                          this.props.stepName && this.props.stepName.length > 0
+                        ) || this.state.blockDependenciesChoices.length === 0
+                      }
+                      updateSelected={this.updatePrevBlocksNames}
+                      options={this.state.blockDependenciesChoices}
+                      variant="outlined"
+                      selected={this.props.stepDependencies || []}
+                    />
+                  </div>
+                </Tooltip>
               ) : (
                 ''
               )}
@@ -499,7 +594,7 @@ export class CellMetadataEditor extends React.Component<IProps, IState> {
               )}
 
               {cellType === 'step' ? (
-                <div style={{ padding: 0 }}>
+                <div style={{ padding: 0, marginRight: '4px' }}>
                   <Button
                     disabled={
                       !(this.props.stepName && this.props.stepName.length > 0)
@@ -518,9 +613,29 @@ export class CellMetadataEditor extends React.Component<IProps, IState> {
                 ''
               )}
 
+              {cellType === 'step' ? (
+                <div style={{ padding: 0 }}>
+                  <Button
+                    disabled={
+                      !(this.props.stepName && this.props.stepName.length > 0)
+                    }
+                    color="primary"
+                    variant="contained"
+                    size="small"
+                    title="Caching"
+                    onClick={() => this.toggleCacheDialog()}
+                    style={{ width: '5%' }}
+                  >
+                    CACHE
+                  </Button>
+                </div>
+              ) : (
+                ''
+              )}
+
               <IconButton
                 aria-label="delete"
-                onClick={() => this.closeEditor()}
+                onMouseDown={() => this.closeEditor()}
               >
                 <CloseIcon fontSize="small" />
               </IconButton>
@@ -583,6 +698,61 @@ export class CellMetadataEditor extends React.Component<IProps, IState> {
               onClick={() => this.toggleBaseImageDialog()}
               color="primary"
             >
+              Ok
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        {/* Cache Dialog */}
+        <Dialog
+          open={this.state.cacheDialogOpen}
+          onClose={() => this.toggleCacheDialog()}
+          fullWidth={true}
+          maxWidth={'sm'}
+        >
+          <DialogTitle>Step Caching Control</DialogTitle>
+          <DialogContent>
+            <p style={{ margin: '8px 0 16px 0' }}>
+              Control whether this step's results are cached. When enabled,
+              Kubeflow Pipelines will reuse previous execution results if inputs
+              haven't changed.
+            </p>
+            <FormControl component="fieldset">
+              <RadioGroup
+                value={this.state.cachingValue}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  const val = e.target.value as
+                    | 'default'
+                    | 'enabled'
+                    | 'disabled';
+                  // Update local state immediately for responsive UI
+                  this.setState({ cachingValue: val });
+                  // Save to notebook
+                  this.updateEnableCaching(
+                    val === 'default' ? undefined : val === 'enabled',
+                  );
+                }}
+              >
+                <FormControlLabel
+                  value="default"
+                  control={<Radio />}
+                  label="Use Pipeline Default"
+                />
+                <FormControlLabel
+                  value="enabled"
+                  control={<Radio />}
+                  label="Enable Caching"
+                />
+                <FormControlLabel
+                  value="disabled"
+                  control={<Radio />}
+                  label="Disable Caching"
+                />
+              </RadioGroup>
+            </FormControl>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => this.toggleCacheDialog()} color="primary">
               Ok
             </Button>
           </DialogActions>

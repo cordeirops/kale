@@ -25,6 +25,7 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import CircularProgress from '@mui/material/CircularProgress';
 import { styled } from '@mui/material/styles';
+import type { DeployType } from '../widgets/LeftPanel';
 
 const DeployButtonContainer = styled('div')({
   '& .deploy-button': {
@@ -38,6 +39,7 @@ const StyledButtonGroup = styled(ButtonGroup)({
 
 const MainButton = styled(Button)({
   width: '100%',
+  whiteSpace: 'nowrap',
 });
 
 const DropdownButton = styled(Button)({
@@ -50,7 +52,8 @@ const StyledPopper = styled(Popper)({
 
 interface ISplitDeployButton {
   running: boolean;
-  handleClick: (value: string) => void;
+  handleClick: (value: DeployType) => void;
+  disabled?: boolean;
   // katibRun: boolean;
 }
 
@@ -61,7 +64,7 @@ export const SplitDeployButton: React.FunctionComponent<
   const anchorRef = React.useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  const options = [
+  const options: { label: string; value: DeployType }[] = [
     {
       label: 'Compile and Run',
       value: 'run',
@@ -71,7 +74,7 @@ export const SplitDeployButton: React.FunctionComponent<
   ];
 
   const handleMenuItemClick = (
-    event: React.MouseEvent<HTMLLIElement>,
+    _event: React.MouseEvent<HTMLLIElement>,
     index: number,
   ) => {
     setSelectedIndex(index);
@@ -102,7 +105,7 @@ export const SplitDeployButton: React.FunctionComponent<
     <DeployButtonContainer>
       <div className="deploy-button">
         <Grid container>
-          <Grid size={12} sx={{ padding: '4px 10px' }}>
+          <Grid size={12} sx={{ padding: '4px 6px' }}>
             <StyledButtonGroup
               variant="contained"
               color="primary"
@@ -112,7 +115,7 @@ export const SplitDeployButton: React.FunctionComponent<
               <MainButton
                 color="primary"
                 onClick={handleMainButtonClick}
-                disabled={props.running}
+                disabled={props.running || props.disabled}
               >
                 {props.running ? (
                   <CircularProgress thickness={6} size={14} color="secondary" />
@@ -126,6 +129,7 @@ export const SplitDeployButton: React.FunctionComponent<
                 aria-controls={open ? 'menu-list-grow' : undefined}
                 aria-haspopup="true"
                 onClick={handleToggle}
+                disabled={props.running || props.disabled}
               >
                 <MoreVertIcon />
               </DropdownButton>

@@ -8,8 +8,8 @@
 <a target="_blank" href="https://pypi.org/project/kubeflow-kale/">
     <img alt="PyPI Version" src="https://badgen.net/pypi/v/kubeflow-kale">
 </a>
-<a target="_blank" href="https://www.npmjs.com/package/kubeflow-kale-labextension">
-  <img alt="npm Version" src="https://badgen.net/npm/v/kubeflow-kale-labextension">
+<a target="_blank" href="https://www.npmjs.com/package/jupyterlab-kubeflow-kale">
+  <img alt="npm Version" src="https://badgen.net/npm/v/jupyterlab-kubeflow-kale">
 </a>
 <a target="_blank" href="https://github.com/kubeflow/kale/actions">
   <img alt="Kale CI Workflow Status" src="https://github.com/kubeflow/kale/workflows/CI/badge.svg">
@@ -56,8 +56,11 @@ Read more about Kale and how it works in this Medium post:
 
 ### Requirements
 
-- **Python 3.10+**
-- **Kubeflow Pipelines v2.4.0+** - Install as recommended in the official [Kubeflow Pipelines Installation](https://www.kubeflow.org/docs/components/pipelines/operator-guides/installation/) documentation
+- **Python 3.11+**
+- **Kubeflow Pipelines v2.16.0+**
+     - The `securityContext` field in the Kubernetes executor config is not recognized by older KFP servers (`kfp[kubernetes] < 2.16.0`), causing pipeline submission to fail.
+     - Install KFP as recommended in the official [Kubeflow Pipelines Installation](https://www.kubeflow.org/docs/components/pipelines/operator-guides/installation/) documentation (make sure to set `PIPELINE_VERSION=2.16.0` or later)
+     - If you are upgrading from an earlier version, make sure you have `kfp[kubernetes]>=2.16.0` in your dependencies along with `kfp>=2.0.0`
 - A Kubernetes cluster (`minikube`, `kind`, or any K8s cluster)
 
 ### Installation
@@ -77,7 +80,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed setup instructions.
 Once v2.0 is released, you'll be able to install from PyPI:
 
 ```bash
-pip install "jupyterlab>=4.0.0" kubeflow-kale kubeflow-kale-labextension
+pip install "jupyterlab>=4.0.0" kubeflow-kale[jupyter]
 jupyter lab
 ```
 
@@ -103,10 +106,67 @@ jupyter lab
 
 <img alt="Kale JupyterLab Extension" src="docs/imgs/Extension.png"/>
 
-## FAQ
+## Docker (Local Testing)
 
-To build images to be used as a NotebookServer in Kubeflow, refer to the
-Dockerfile in the `docker` folder.
+You can test Kale in a Kubeflow-like notebook environment using Docker. The image
+is based on the official Kubeflow notebook image (`jupyter-scipy`) with Kale
+pre-installed.
+
+```bash
+make docker-build   # Build wheels + Docker image
+make docker-run     # Start JupyterLab on http://localhost:8889
+```
+
+To connect to a KFP cluster, run these in separate terminals:
+
+```bash
+# Terminal 1: Serve the dev wheel (so compiled pipelines can install Kale)
+make kfp-serve
+
+# Terminal 2: Port-forward the KFP API
+kubectl port-forward -n kubeflow svc/ml-pipeline 8080:8888
+
+# Terminal 3: Start the container
+make docker-run
+```
+
+`make docker-run` automatically configures:
+- **KFP API** via `host.docker.internal` (works on macOS, Windows, and Linux)
+- **KFP UI links** pointing to `localhost:8080` (so pipeline links open in your browser)
+- **Wheel server** connectivity for compiled pipelines
+
+## Cell Types
+
+Kale uses special cell types (tags) to organize your notebook into pipeline components. You can assign these types to cells using the Kale JupyterLab extension or by adding tags directly in the notebook metadata.
+
+### Cell Types Reference
+
+| Cell Type | Status | Description |
+|-----------|--------|-------------|
+| **Imports** | ✅ Works | The code in this cell will be pre-pended to every step of the pipeline. Used for all import statements. **All imports must be placed in cells tagged as `imports`.** Importing libraries (pandas, tensorflow, etc.) in other cell types will cause pipeline execution errors. |
+| **Functions** | ✅ Works |The code in this cell will be pre-pended to every step of the pipeline, after **imports**. Used for function and class definitions only.  **Do not include** top-level executable statements |
+| **Pipeline Parameters** | ✅ Works | Define variables that will become pipeline parameters. If more than one Pipeline Parameters cell exists, and a parameter is defined in each cell, only the final value will be taken.|
+| **Pipeline Metrics** | ✅ Works | Print scalar metrics and transform it into pipeline metrics. |
+| **Step** | ✅ Works | Regular pipeline steps with custom names. This is the default cell type for your data processing and ML logic. Each step can have dependencies on other steps. Steps can also define their own image and GPU requirements. |
+| **Skip Cell** | ✅ Works | Cells marked as skip will be excluded from the pipeline. Useful for exploratory code or debugging that shouldn't be part of the production pipeline. |
+
+### Important Guidelines
+
+> [!WARNING]
+> **Imports outside `Imports` cells won't be detected for automatic dependency installation, which causes ImportError at runtime if the package isn't pre-installed in the container image.**
+
+
+**Best Practices:**
+- Place all imports at the beginning of your notebook in cells tagged as `Imports`
+- Keep function definitions pure - no side effects (modifying global variables or mutable parameters), prints, or imports
+- Use `pipeline-parameters` for values you might want to tune between runs
+- Use `skip` cells for exploratory analysis that shouldn't be in the pipeline
+
+### Example
+
+Check out the example notebooks at `examples/` to see cell types in action.
+
+## FAQ
 
 Head over to [FAQ](FAQ.md) to read about some known issues and some of the
 limitations imposed by the Kale data marshalling model.
@@ -127,7 +187,7 @@ make test     # Run all tests
 make jupyter  # Start JupyterLab
 ```
 
-See [CONTRIBUTE.md](CONTRIBUTE.md) for detailed development instructions, including:
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed development instructions, including:
 - Available make commands
 - Testing with KFP clusters
 - Building release artifacts
