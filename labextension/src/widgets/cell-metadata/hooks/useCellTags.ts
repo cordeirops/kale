@@ -16,7 +16,8 @@ import { useCallback, useContext } from 'react';
 import { NotebookPanel } from '@jupyterlab/notebook';
 import TagsUtils, { ISecretRef } from '../../../lib/TagsUtils';
 import { CellMetadataContext } from '../../../lib/CellMetadataContext';
-import { RESERVED_CELL_NAMES } from '../constants';
+import { RESERVED_CELL_NAMES, NOTEBOOK_REF_CELL_HINT } from '../constants';
+import CellUtils from '../../../lib/CellUtils';
 
 interface IUseCellTagsParams {
   notebook: NotebookPanel;
@@ -26,7 +27,26 @@ interface IUseCellTagsParams {
   secrets?: { [envName: string]: ISecretRef };
   baseImage?: string;
   enableCaching?: boolean;
+  notebookPath?: string;
   generateHtmlReport?: boolean;
+}
+
+/**
+ * Derive the reference name for a `notebook:<name>` tag from the referenced
+ * notebook's file name, sanitized the same way the backend derives module
+ * names (lowercase, separators to '_', must not start with a digit).
+ */
+export function notebookRefNameFromPath(path: string): string {
+  const base = path.split('/').pop() || '';
+  let name = base
+    .replace(/\.ipynb$/, '')
+    .toLowerCase()
+    .replace(/[-\s]+/g, '_')
+    .replace(/[^a-z0-9_]/g, '');
+  if (name && !/^[_a-z]/.test(name)) {
+    name = 'nb_' + name;
+  }
+  return name;
 }
 
 /**
@@ -42,6 +62,7 @@ export function useUpdateCellTags({
   secrets,
   baseImage,
   enableCaching,
+  notebookPath,
   generateHtmlReport,
 }: IUseCellTagsParams) {
   const { activeCellIndex } = useContext(CellMetadataContext);
@@ -56,6 +77,7 @@ export function useUpdateCellTags({
         secrets: secrets || {},
         baseImage,
         enableCaching,
+        notebookPath,
         generateHtmlReport,
         stepName: value,
       });
@@ -69,6 +91,7 @@ export function useUpdateCellTags({
       secrets,
       baseImage,
       enableCaching,
+      notebookPath,
       generateHtmlReport,
     ],
   );
@@ -77,11 +100,39 @@ export function useUpdateCellTags({
     (value: string) => {
       if (RESERVED_CELL_NAMES.includes(value)) {
         updateStepName(value);
+      } else if (value === 'notebook') {
+        // an empty reference; the name is derived once the path is entered
+        updateStepName('notebook:');
+        // a reference cell holds no code of its own, so say so in the cell
+        // itself. Only when it is empty: existing code is the user's, and the
+        // compiler reports it rather than this quietly overwriting it.
+        const cell = CellUtils.getCell(notebook.content, activeCellIndex);
+        if (!(cell?.sharedModel?.getSource() ?? '').trim()) {
+          CellUtils.injectCodeAtIndex(
+            notebook.content,
+            activeCellIndex,
+            NOTEBOOK_REF_CELL_HINT,
+          );
+        }
       } else {
         TagsUtils.resetCell(notebook, activeCellIndex, stepName || '');
       }
     },
     [notebook, activeCellIndex, stepName, updateStepName],
+  );
+
+  const updateNotebookPath = useCallback(
+    (value: string) => {
+      TagsUtils.setKaleCellTags(notebook, activeCellIndex, {
+        stepName: 'notebook:' + notebookRefNameFromPath(value),
+        prevStepNames: [],
+        limits: {},
+        baseImage: undefined,
+        enableCaching: undefined,
+        notebookPath: value,
+      });
+    },
+    [notebook, activeCellIndex],
   );
 
   const updateDependencies = useCallback(
@@ -255,6 +306,7 @@ export function useUpdateCellTags({
   return {
     updateCellType,
     updateStepName,
+    updateNotebookPath,
     updateDependencies,
     updateLimits,
     updateSecrets,

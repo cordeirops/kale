@@ -38,6 +38,7 @@ interface IStepConfigDialogProps {
   baseImage?: string;
   resolvedDefaultBaseImage: string;
   onUpdateBaseImage: (value: string) => void;
+  runtimeImages: string[];
   // GPU / limits
   limits: { [id: string]: string };
   updateLimits: (actions: ILimitAction[]) => void;
@@ -84,6 +85,7 @@ export const StepConfigDialog: React.FC<IStepConfigDialogProps> = props => {
         <BaseImageSection
           baseImage={props.baseImage}
           resolvedDefaultBaseImage={props.resolvedDefaultBaseImage}
+          runtimeImages={props.runtimeImages}
           onUpdateBaseImage={props.onUpdateBaseImage}
         />
       ),

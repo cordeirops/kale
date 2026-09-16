@@ -120,6 +120,7 @@ export function useInlineMetadata(
         secrets: tags.secrets || {},
         baseImage: tags.baseImage,
         enableCaching: tags.enableCaching,
+        notebookPath: tags.notebookPath,
         generateHtmlReport: tags.generateHtmlReport,
       };
 
