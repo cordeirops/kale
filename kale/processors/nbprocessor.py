@@ -54,6 +54,7 @@ from kale.processors.constants import (
     PIPELINE_PARAMETERS_TAG,
     PREV_STEPS,
     REPORT_ENABLED,
+    SECRET_CONF_TYPE,
     SECRETS,
     STEP_NAMES,
     STEPS_DEFAULTS,
@@ -153,7 +154,7 @@ class NotebookConfig(PipelineConfig):
                 key, value = get_limit_from_tag(parts)
                 result[LIMITS][key] = value
 
-            if conf_type == "secret":
+            if conf_type == SECRET_CONF_TYPE:
                 if SECRETS not in result:
                     result[SECRETS] = {}
                 secret_name, secret_key, env_name = get_secret_from_tag(parts)
@@ -710,7 +711,7 @@ class NotebookProcessor:
                 key, value = get_limit_from_tag(tag_parts)
                 cell_limits.update({key: value})
 
-            if tag_name == "secret":
+            if tag_name == SECRET_CONF_TYPE:
                 secret_name, secret_key, env_name = get_secret_from_tag(tag_parts)
                 cell_secrets[env_name] = {
                     validators.SECRET_NAME_KEY: secret_name,

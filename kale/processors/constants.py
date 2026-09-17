@@ -59,6 +59,8 @@ LIMITS_TAG = r"^limit:([_a-z-\.\/]+):([_a-zA-Z0-9\.]+)$"
 # kfp.kubernetes.use_secret_as_env. Built from the same validators applied to
 # StepConfig.secrets (see K8sSecretsValidator) so the two can't drift apart.
 # E.g.: secret:db-credentials:password:DB_PASSWORD
+# The tag prefix, i.e. the first `:`-separated part of a `secret:...` tag.
+SECRET_CONF_TYPE = "secret"
 SECRET_TAG = (
     r"^secret:"
     rf"({_regex_body(validators.K8sSecretNameValidator.regex)}):"
